@@ -1,0 +1,29 @@
+---
+abstract: Use sql or orm objects with a gtk2 interface
+author:
+  - FranE<ccedil>ois Rappaz (rappazf@gmail.com)
+build_requires:
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.140640'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Gtk2-Ex-DbLinker
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Class::Interface: 1.01
+  DBI: 1.631
+  DateTime::Format::Strptime: 1.5
+  GLib: 1.24
+  Gtk2: 1.24
+  Gtk2::Ex::Dialogs: 0.11
+  Log::Log4perl: 1.41
+  Test::More: 1
+version: 0.01

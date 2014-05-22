@@ -1,0 +1,481 @@
+[127] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 232 Gtk2.Ex.DbLinker.RdbDataManager - Class: Rdb::Country
+[128] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field countryid : countryid
+[129] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 247 Gtk2.Ex.DbLinker.RdbDataManager - found pk countryid
+[130] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 250 Gtk2.Ex.DbLinker.RdbDataManager - found auto inc pk countryid
+[131] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field countryid type: serial
+[132] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field country : country
+[134] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field country type: text
+[135] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field mainlangid : mainlangid
+[136] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field mainlangid type: integer
+[148] ../lib//Gtk2/Ex/DbLinker/Form.pm 116 Gtk2.Ex.DbLinker.Form -  ** New Form object ** 
+[149] ../lib//Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget countryid
+[150] ../lib//Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkEntry countryid with self->changed 
+[151] ../lib//Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget country
+[152] ../lib//Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkEntry country with self->changed 
+[153] ../lib//Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget mainlangid
+[155] ../lib//Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkComboBoxEntry mainlangid with self->changed 
+[156] ../lib//Gtk2/Ex/DbLinker/Form.pm 523 Gtk2.Ex.DbLinker.Form - set_recordspinner
+[157] ../lib//Gtk2/Ex/DbLinker/Form.pm 543 Gtk2.Ex.DbLinker.Form - recordspinner set
+[165] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 232 Gtk2.Ex.DbLinker.RdbDataManager - Class: Rdb::Langue
+[166] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field langid : langid
+[168] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 247 Gtk2.Ex.DbLinker.RdbDataManager - found pk langid
+[169] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 250 Gtk2.Ex.DbLinker.RdbDataManager - found auto inc pk langid
+[170] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field langid type: serial
+[171] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field langue : langue
+[172] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field langue type: text
+[173] ../lib//Gtk2/Ex/DbLinker/Form.pm 166 Gtk2.Ex.DbLinker.Form - add_combo : dman says cols are : langid langue
+[174] ../lib//Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : serial
+[175] ../lib//Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langid 0 Glib::Int
+[177] ../lib//Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : text
+[178] ../lib//Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langue 1 Glib::String
+[179] ../lib//Gtk2/Ex/DbLinker/Form.pm 184 Gtk2.Ex.DbLinker.Form - new renderer for 1
+[180] ../lib//Gtk2/Ex/DbLinker/Form.pm 197 Gtk2.Ex.DbLinker.Form - Glib::Int Glib::String
+[182] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 13 count: 14
+[183] ../lib//Gtk2/Ex/DbLinker/Form.pm 219 Gtk2.Ex.DbLinker.Form - add_combo: 14 rows added
+[206] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 232 Gtk2.Ex.DbLinker.RdbDataManager - Class: Rdb::Speak
+[208] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field speaksid : speaksid
+[209] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 247 Gtk2.Ex.DbLinker.RdbDataManager - found pk speaksid
+[210] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 250 Gtk2.Ex.DbLinker.RdbDataManager - found auto inc pk speaksid
+[211] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field speaksid type: serial
+[212] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field countryid : countryid
+[213] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field countryid type: integer
+[214] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field langid : langid
+[216] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field langid type: integer
+[217] ../lib//Gtk2/Ex/DbLinker/Form.pm 116 Gtk2.Ex.DbLinker.Form -  ** New Form object ** 
+[218] ../lib//Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget speaksid
+[219] ../lib//Gtk2/Ex/DbLinker/Form.pm 506 Gtk2.Ex.DbLinker.Form -  ... not found 
+[221] ../lib//Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget countryid
+[222] ../lib//Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkEntry countryid with self->changed 
+[223] ../lib//Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget langid
+[224] ../lib//Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkComboBoxEntry langid with self->changed 
+[225] ../lib//Gtk2/Ex/DbLinker/Form.pm 523 Gtk2.Ex.DbLinker.Form - set_recordspinner
+[226] ../lib//Gtk2/Ex/DbLinker/Form.pm 543 Gtk2.Ex.DbLinker.Form - recordspinner set
+[227] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 62 Gtk2.Ex.DbLinker.RdbDataManager - RdbDataManager : not data
+[235] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 232 Gtk2.Ex.DbLinker.RdbDataManager - Class: Rdb::Langue
+[236] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field langid : langid
+[238] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 247 Gtk2.Ex.DbLinker.RdbDataManager - found pk langid
+[239] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 250 Gtk2.Ex.DbLinker.RdbDataManager - found auto inc pk langid
+[240] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field langid type: serial
+[241] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field langue : langue
+[242] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field langue type: text
+[243] ../lib//Gtk2/Ex/DbLinker/Form.pm 166 Gtk2.Ex.DbLinker.Form - add_combo : dman says cols are : langid langue
+[244] ../lib//Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : serial
+[246] ../lib//Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langid 0 Glib::Int
+[246] ../lib//Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : text
+[247] ../lib//Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langue 1 Glib::String
+[248] ../lib//Gtk2/Ex/DbLinker/Form.pm 184 Gtk2.Ex.DbLinker.Form - new renderer for 1
+[249] ../lib//Gtk2/Ex/DbLinker/Form.pm 197 Gtk2.Ex.DbLinker.Form - Glib::Int Glib::String
+[251] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 13 count: 14
+[252] ../lib//Gtk2/Ex/DbLinker/Form.pm 219 Gtk2.Ex.DbLinker.Form - add_combo: 14 rows added
+[262] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 232 Gtk2.Ex.DbLinker.RdbDataManager - Class: Rdb::Speak
+[263] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field speaksid : speaksid
+[264] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 247 Gtk2.Ex.DbLinker.RdbDataManager - found pk speaksid
+[265] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 250 Gtk2.Ex.DbLinker.RdbDataManager - found auto inc pk speaksid
+[267] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field speaksid type: serial
+[268] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field countryid : countryid
+[269] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field countryid type: integer
+[270] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field langid : langid
+[271] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field langid type: integer
+[279] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 232 Gtk2.Ex.DbLinker.RdbDataManager - Class: Rdb::Country
+[280] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field countryid : countryid
+[281] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 247 Gtk2.Ex.DbLinker.RdbDataManager - found pk countryid
+[282] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 250 Gtk2.Ex.DbLinker.RdbDataManager - found auto inc pk countryid
+[283] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field countryid type: serial
+[285] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field country : country
+[286] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field country type: text
+[287] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 241 Gtk2.Ex.DbLinker.RdbDataManager - get method for field mainlangid : mainlangid
+[288] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 266 Gtk2.Ex.DbLinker.RdbDataManager - Rdb_dman_init: field mainlangid type: integer
+[289] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 81 Gtk2.Ex.DbLinker.Datasheet - cols: speaksid countryid langid
+[291] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : _status_column_ renderer : status_column
+[291] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : langid renderer : hidden
+[293] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : countryid renderer : combo
+[294] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 155 Gtk2.Ex.DbLinker.Datasheet - auto inc pk: speaksid
+[309] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : _status_column_ 0 ref: Gtk2::CellRendererPixbuf
+[311] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : langid 1 ref: Gtk2::CellRendererText
+[312] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 243 Gtk2.Ex.DbLinker.Datasheet - field name with txt renderer: langid
+[314] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : countryid 2 ref: Gtk2::CellRendererCombo
+[315] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 341 Gtk2.Ex.DbLinker.Datasheet - setup_combo field name : countryid col number :2
+[316] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[318] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 360 Gtk2.Ex.DbLinker.Datasheet - setup_combo cols : countryid country
+[319] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 226 Gtk2.Ex.DbLinker.Datasheet - field name with combo renderer: countryid
+[321] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 264 Gtk2.Ex.DbLinker.Datasheet -  signal : edited
+[325] ../lib//Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query countryid country mainlangid
+[327] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[328] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 7
+[329] Forms/Langues2.pm 119 Forms.Langues2 - countryid_changed called
+[330] Forms/Langues2.pm 122 Forms.Langues2 - on_countryid_changed : 7
+[331] Forms/Sflang2.pm 117 Forms.Sflang2 - sf_langues: countryid_changed 7
+[339] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[340] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 25
+[341] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 7
+[342] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[343] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 18
+[345] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 7
+[346] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 11
+[347] ../lib//Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[348] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[350] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 7
+[351] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 4 widget: Gtk2::ComboBoxEntry
+[396] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[397] Forms/Sflang2.pm 136 Forms.Sflang2 - sf_langues: langid_changed 4
+[405] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[406] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 8
+[408] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 4
+[409] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[410] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 27
+[411] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 3
+[412] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[414] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[415] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[416] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[417] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[419] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[420] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[421] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[422] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[423] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[424] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[425] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 4
+[426] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Switzerland for 4
+[427] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[428] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[429] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[430] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[431] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[432] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[433] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 3
+[434] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 3
+[435] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 3
+[436] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : France for 3
+[437] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[439] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[440] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 0
+[441] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[442] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[443] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[444] Forms/Sflang2.pm 123 Forms.Sflang2 - sf_langues: langid changed 4
+[452] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[453] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 8
+[454] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 4
+[456] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[457] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 27
+[458] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 3
+[459] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[460] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[461] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[462] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[463] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[465] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[466] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[467] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[468] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[468] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[470] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[471] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 4
+[472] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Switzerland for 4
+[473] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[474] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[475] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[476] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[477] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[478] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[480] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 3
+[481] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 3
+[482] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 3
+[483] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : France for 3
+[484] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[485] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: Belgique
+[487] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 4 widget: Gtk2::ComboBoxEntry
+[488] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[489] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 0
+[490] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[491] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[4374] ../lib//Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 1
+[4377] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 1
+[4379] Forms/Langues2.pm 119 Forms.Langues2 - countryid_changed called
+[4379] Forms/Langues2.pm 122 Forms.Langues2 - on_countryid_changed : 1
+[4380] Forms/Sflang2.pm 117 Forms.Sflang2 - sf_langues: countryid_changed 1
+[4395] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[4399] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 26
+[4400] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 1
+[4404] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 1
+[4406] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 2
+[4408] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 1
+[4409] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 8
+[4411] ../lib//Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[4413] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[4414] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 1
+[4416] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[4419] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[4420] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[4422] Forms/Sflang2.pm 136 Forms.Sflang2 - sf_langues: langid_changed 1
+[4431] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[4433] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 3
+[4436] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 2
+[4440] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 1
+[4442] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[4443] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 1 rows
+[4444] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[4448] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[4450] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[4451] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[4452] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[4453] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[4454] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[4456] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[4456] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[4458] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[4459] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[4461] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[4462] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[4463] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[4464] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[4465] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[4468] Forms/Sflang2.pm 123 Forms.Sflang2 - sf_langues: langid changed 1
+[4475] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[4478] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 3
+[4483] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 2
+[4484] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 1
+[4484] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[4485] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 1 rows
+[4487] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[4491] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[4492] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[4493] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[4493] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[4497] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[4498] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[4499] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[4500] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[4503] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[4504] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[4505] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: England
+[4506] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[4508] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[4508] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[4510] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[4511] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[5638] ../lib//Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 2
+[5639] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 3
+[5640] Forms/Langues2.pm 119 Forms.Langues2 - countryid_changed called
+[5642] Forms/Langues2.pm 122 Forms.Langues2 - on_countryid_changed : 3
+[5642] Forms/Sflang2.pm 117 Forms.Sflang2 - sf_langues: countryid_changed 3
+[5651] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[5652] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 27
+[5653] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 3
+[5654] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[5656] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 6
+[5657] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 3
+[5658] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 9
+[5659] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 7
+[5660] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 3
+[5661] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 10
+[5663] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 19
+[5664] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 3
+[5665] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 15
+[5666] ../lib//Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[5667] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 3 count: 4
+[5669] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 3
+[5670] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 4 widget: Gtk2::ComboBoxEntry
+[5671] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[5672] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[5673] Forms/Sflang2.pm 136 Forms.Sflang2 - sf_langues: langid_changed 4
+[5680] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[5682] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 8
+[5683] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 4
+[5684] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[5685] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 25
+[5685] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 7
+[5687] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[5688] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[5689] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[5690] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[5692] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[5693] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5694] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5695] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[5696] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[5698] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[5698] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[5699] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 4
+[5701] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Switzerland for 4
+[5702] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[5703] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[5704] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5705] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5707] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[5708] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[5709] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 7
+[5709] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 7
+[5711] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 7
+[5712] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Belgique for 7
+[5713] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[5715] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[5716] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[5717] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 3 count: 4
+[5718] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 3 count: 4
+[5719] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[5721] Forms/Sflang2.pm 123 Forms.Sflang2 - sf_langues: langid changed 4
+[5729] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[5729] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 8
+[5730] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 4
+[5732] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[5733] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 25
+[5734] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 7
+[5734] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 4
+[5735] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[5736] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[5737] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[5738] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[5739] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5740] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5741] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[5742] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[5743] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[5743] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[5744] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 4
+[5745] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Switzerland for 4
+[5746] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[5747] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[5748] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5749] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 4
+[5750] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 4
+[5751] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[5752] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 7
+[5753] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 7
+[5754] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 7
+[5755] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Belgique for 7
+[5756] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[5757] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: France
+[5759] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 4 widget: Gtk2::ComboBoxEntry
+[5760] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[5761] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[5761] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[5762] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[6418] ../lib//Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 3
+[6419] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 5
+[6420] Forms/Langues2.pm 119 Forms.Langues2 - countryid_changed called
+[6421] Forms/Langues2.pm 122 Forms.Langues2 - on_countryid_changed : 5
+[6422] Forms/Sflang2.pm 117 Forms.Sflang2 - sf_langues: countryid_changed 5
+[6430] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[6432] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 22
+[6433] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 5
+[6434] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 5
+[6435] ../lib//Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[6436] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[6437] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 5
+[6439] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 5 widget: Gtk2::ComboBoxEntry
+[6440] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[6441] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[6442] Forms/Sflang2.pm 136 Forms.Sflang2 - sf_langues: langid_changed 5
+[6450] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[6451] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 9
+[6452] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 4
+[6453] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 5
+[6454] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[6455] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 1 rows
+[6456] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[6457] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[6459] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 5
+[6460] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 5
+[6461] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 5
+[6462] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[6463] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[6464] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[6465] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 4
+[6466] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Switzerland for 4
+[6468] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[6469] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[6470] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[6471] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[6472] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[6474] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[6474] Forms/Sflang2.pm 123 Forms.Sflang2 - sf_langues: langid changed 5
+[6482] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[6483] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 9
+[6485] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 4
+[6486] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 5
+[6487] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[6488] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 1 rows
+[6490] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[6491] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[6492] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 5
+[6493] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 5
+[6494] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 5
+[6495] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[6496] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[6498] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[6499] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 4
+[6500] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Switzerland for 4
+[6501] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[6502] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: Germany
+[6503] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 5 widget: Gtk2::ComboBoxEntry
+[6505] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[6506] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[6507] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[6509] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[7525] ../lib//Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 4
+[7527] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[7528] Forms/Langues2.pm 119 Forms.Langues2 - countryid_changed called
+[7529] Forms/Langues2.pm 122 Forms.Langues2 - on_countryid_changed : 2
+[7531] Forms/Sflang2.pm 117 Forms.Sflang2 - sf_langues: countryid_changed 2
+[7539] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[7540] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 3
+[7541] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 2
+[7543] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 1
+[7544] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 4
+[7545] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 2
+[7546] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 3
+[7547] ../lib//Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[7548] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[7550] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[7550] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[7552] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[7553] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[7555] Forms/Sflang2.pm 136 Forms.Sflang2 - sf_langues: langid_changed 1
+[7563] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[7564] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 26
+[7565] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 1
+[7567] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 1
+[7568] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[7569] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 1 rows
+[7570] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[7572] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[7572] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[7573] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[7574] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[7576] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[7576] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[7577] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[7579] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[7580] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[7581] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[7582] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[7583] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[7584] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[7585] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 1 count: 2
+[7587] ../lib//Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[7588] Forms/Sflang2.pm 123 Forms.Sflang2 - sf_langues: langid changed 1
+[7595] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 41 Gtk2.Ex.DbLinker.RdbDataManager - query 3
+[7597] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - speaksid : 26
+[7598] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - countryid : 1
+[7599] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 50 Gtk2.Ex.DbLinker.RdbDataManager - langid : 1
+[7600] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : -1 count: 1
+[7601] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 1 rows
+[7602] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[7603] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[7604] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[7605] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[7606] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[7608] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[7608] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[7610] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[7611] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[7612] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[7613] ../lib//Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[7614] ../lib//Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: Ireland
+[7616] ../lib//Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[7617] ../lib//Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[7618] ../lib//Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[7619] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
+[7620] ../lib//Gtk2/Ex/DbLinker/RdbDataManager.pm 181 Gtk2.Ex.DbLinker.RdbDataManager - row_count last pos : 7 count: 8
