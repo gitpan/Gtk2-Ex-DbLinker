@@ -1,5 +1,5 @@
 ---
-abstract: Use sql or orm objects with a gtk2 interface
+abstract: Use sql or orm objects to build a gtk2 Gui
 author:
   - FranE<ccedil>ois Rappaz (rappazf@gmail.com)
 build_requires:
@@ -26,4 +26,4 @@ requires:
   Gtk2::Ex::Dialogs: 0.11
   Log::Log4perl: 1.41
   Test::More: 1
-version: 0.01
+version: 0.02

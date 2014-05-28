@@ -768,28 +768,43 @@ See Version in L<Gtk2::Ex::DbLinker>
 
 =head1 SYNOPSIS
 
-	use My::DbLinker::Form;
 	use Rdb::Coll::Manager;
 	use Rdb::Biblio::Manager;
+
 	use Gtk2::Ex::DbLinker::RdbDataManager;
+	use Gtk2::Ex::DbLinker::Form;
+
 	use Gtk2 -init;
 	use Gtk2::GladeXML;
 
 	 my $builder = Gtk2::Builder->new();
 	 $builder->add_from_file($path_to_glade_file);
 
+This gets the Rose::DB::Object::Manager (we could have use plain sql command, or DBIx::Class object instead), and the DataManager object we pass to the datasheet constructor.
+
 	my $data = Rdb::Coll::Manager->get_coll(query => [noti => {eq => $self->{noti}}]);
+
 	my $dman = Linker::RdbDataManager->new({data=> $data, meta => Rdb::Coll->meta });
 
+This create the datasheet.
+rec_spinner, status_label, rec_count_label are Gtk2 widget used to display the position of the current record. See the C<runexample2.pl> in the examples folder for more details. 
+date_formatters receives a hash of id for the Gtk2::Entries in the Glade file (keys) and an arrays (values) of formating strings to read-write the database (pos 0) and to display in the form (pos 1). time_zone and locale are needed by Date::Time::Strptime.
+
+
+
 		$self->{form_coll} = Gtk2::Ex::DbLinker::Form->new({
-		data_manager => $dman,
-		#meta => Rdb::Coll->meta,
-		builder => 	$builder,
-	  	rec_spinner => $self->{dnav}->get_object('RecordSpinner'),
-	    	status_label=>  $self->{dnav}->get_object('lbl_RecordStatus'),
-		rec_count_label => $self->{dnav}->get_object("lbl_recordCount"),
-		on_current =>  sub {on_current($self)},
-		date_formatters => {datecorr => "%d-%m-%Y",  },
+			data_manager => $dman,
+			meta => Rdb::Coll->meta,
+			builder => 	$builder,
+		  	rec_spinner => $self->{dnav}->get_object('RecordSpinner'),
+	    		status_label=>  $self->{dnav}->get_object('lbl_RecordStatus'),
+			rec_count_label => $self->{dnav}->get_object("lbl_recordCount"),
+			on_current =>  sub {on_current($self)},
+			date_formatters => {
+				field_id1 => ["%Y-%m-%d", "%d-%m-%Y"], 
+				field_id2 => ["%Y-%m-%d", "%d-%m-%Y"], },
+			time_zone => 'Europe/Zurich',
+			locale => 'fr_CH',
 	    });
 
 To display new rows on a bound subform, connect the on_changed event to the field of the primary key in the main form.
@@ -1036,7 +1051,12 @@ C<last();>
 
 =head1 SUPPORT
 
+Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+L<http://groups.google.com/group/gtk2-ex-dblinker>. 
+You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
 
+The current state of the source can be extract using Mercurial from
+L<http://code.google.com/p/gtk2-ex-dblinker/>.
 
 =head1 AUTHOR
 
@@ -1055,8 +1075,7 @@ L<Gtk2::Ex::DBI>
 
 =head1 CREDIT
 
-Daniel Kasak
-All this Linker things should have been included in his modules...
+Daniel Kasak, whose modules initiate this work.
 
 =cut
 

@@ -391,10 +391,11 @@ noed is the Gtk2combo id in the glade file and the field's name in the table tha
 	fields => ["id", "nom"],
       });
 
+
 And when all combos or datasheets are added:
 
       $self->{linker}->update;
-  
+
 To change a set of rows in a subform, use and on_changed event of the primary key in the main form and call
 
 		$self->{subform_a}->on_pk_changed($new_primary_key_value);
@@ -426,7 +427,7 @@ The value for C<rs> is a DBIx::Class::ResultSet object.
 		
 		my $dman = Gtk2::Ex::DbLinker::DbcDataManager->new({ rs => $rs});
 
-
+Array references of primary key names and auto incremented primary keys may also be passed using  C<primary_keys>, C<ai_primary_keys> as hash keys. If not given the DbcDataManager uses the metadata to have these.
 
 =head2 C<query( $rs );>
 
@@ -454,7 +455,7 @@ change the current row for the row at position C<$new_pos>.
 Return the position of the current row, first one is 0.
 
 =head2 C<set_field ( $field_id, $value);>
-	
+
 Sets $value in $field_id. undef as a value will set the field to null.
 
 =head2 C<get_field ( $field_id );>
@@ -474,12 +475,21 @@ Return the number of rows.
 Return an array of the field names.
 
 =head2 C<get_primarykeys()>;
-	
+
 Return an array of primary key(s) (auto incremented or not).
 
 =head2 C<get_autoinc_primarykeys()>;
-	
+
 Return an array of auto incremented primary key(s).
+
+=head1 SUPPORT
+
+Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+L<http://groups.google.com/group/gtk2-ex-dblinker>. 
+You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
+
+The current state of the source can be extract using Mercurial from
+L<http://code.google.com/p/gtk2-ex-dblinker/>.
 
 =head1 AUTHOR
 
@@ -497,7 +507,7 @@ L<DBIx::Class>
   
 =head1 CREDIT
 
-
+The authors of L<DBIx::Class> !
 
 =cut
 

@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 
-our $VERSION     = '0.01';
+our $VERSION     = '0.02';
 
 1;
 
@@ -78,8 +78,8 @@ such as inserting, moving, deleting, etc.
 
 =head1 EXAMPLES
 
-The examples folder contains two example that use a sqlite database of three tables: countries (countryid, country, mainlangid), 
-langues (langid, langue), speaks (langid, countryid).
+The examples folder (located in the Gtk2-Ex-DbLinker-xxx folder under cpan/build in your perl folders tree) contains two examples that use a sqlite database of three tables: countries (countryid, country, mainlangid), 
+langues (langid, langue), speaks (speaksid, langid, countryid).
 
 =over
 
@@ -93,7 +93,16 @@ C<runeexample2.pl> gives a main form with a bottom navigation bar that display e
 A subform display other(s) language(s) spoken in that country. Each language is displayed one by one and a second navigation bar is used to show these in turn.
 For each language, a list gives the others countries where this idiom is spoken. Items from this lists are also add/delete/changed with a third "navigation" bar.
 
-=back 
+=back
+
+=head1 SUPPORT
+
+Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+L<http://groups.google.com/group/gtk2-ex-dblinker>. 
+You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
+
+The current state of the source can be extract using Mercurial from
+L<http://code.google.com/p/gtk2-ex-dblinker/>.
 
 =head1 AUTHOR
 

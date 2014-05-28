@@ -459,7 +459,7 @@ sub _setup_combo {
 
 				push @model_row,  $column, $x;
 				#die unless defined($x);
-				if ($field->{renderer} eq "combo" && $x ne "") {
+				if ($field->{renderer} eq "combo" && defined $x && $x ne "") {
 					my @renderers = $field->{ $treeview_type . "_column" }->get_cell_renderers;
 					my $combomodel = $renderers[0]->get("model");
 					# $self->{log}->debug("data-t: " . $field->{ $treeview_type . "_column" }->{renderer}->{data_type});
@@ -748,7 +748,7 @@ __END__
 
 =head1 NAME
 
-Gtk2::Ex::DbLinker::Datasheet -  a module that display data from a database in treeview derived datasheet
+Gtk2::Ex::DbLinker::Datasheet -  a module that display data from a database in a tabular format using a treeview
 
 =head1 VERSION
 
@@ -756,9 +756,17 @@ See Version in L<Gtk2::Ex::DbLinker>
 
 =head1 SYNOPSIS
 
+This display a table having to 6 columns: 3 text entries, 2 combo, 1 toogle, we have to create a dataManager object for each combo, and a dataManager for the table itself. The example here use Rose::DB::Object to access the tables.
+
+This gets the Rose::DB::Object::Manager (we could have use plain sql command, or DBIx::Class object) 
+
     	my $datasheet_rows = Rdb::Vtlsfm::Manager->get_vtlsfm(sort_by => 'nofm');
 
-      	my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $datasheet_rows, meta => Rdb::Vtlsfm->meta }),
+This object is used to instanciante a RdbDataManager, that will be used in the datasheet constructor.
+
+      	my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $datasheet_rows, meta => Rdb::Vtlsfm->meta });
+
+We create the RdbDataManager for the combo rows
      
        	my $biblio_data = Rdb::Biblio::Manager->get_biblio( select => [qw/t1.id t1.nom/], sort_by => 'nom');
 	my $dman_combo_biblio = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $biblio_data, meta => Rdb::Biblio->meta});
@@ -769,6 +777,8 @@ See Version in L<Gtk2::Ex::DbLinker>
 					     		data =>$ed_data,
 						        meta => Rdb::Ed->meta,
 							});
+
+We create the Datasheet object with the columns description
 
 	my $treeview = Gtk2::TreeView->new();
 
@@ -786,12 +796,12 @@ See Version in L<Gtk2::Ex::DbLinker>
 		data_manager => $dman,		
 	});
 
-To change a set of rows:
+To change a set of rows in the table when we navigate between records for example. The primary key of the current record is hold in $primarykey_value :
 
 	  my $data =  Rdb::Vtlsfm::Manager->get_vtlsfm(query =>[nofm =>{eq=> $primarykey_value}], sort_by => 'primarykey');
-	  $self->{lstrero}->get_data_manager->query($data);
+	  $self->{dataseet}->get_data_manager->query($data);
 
-	  $self->{lstrero}->update();
+	  $self->{datasheet}->update();
 
 
 
@@ -825,7 +835,7 @@ You would then typically connect some buttons to methods such as inserting, dele
 
 =head1 METHODS
 
-=head2 constuctor
+=head2 constructor
 
 The C<new()> method expects a hash reference of key / value pairs.
 
@@ -910,6 +920,15 @@ Revert the row to the original state in displaying the values fetch from the dat
 
 =back
 
+=head1 SUPPORT
+
+Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+L<http://groups.google.com/group/gtk2-ex-dblinker>. 
+You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
+
+The current state of the source can be extract using Mercurial from
+L<http://code.google.com/p/gtk2-ex-dblinker/>.
+
 =head1 AUTHOR
 
 FranE<ccedil>ois Rappaz <rappazf@gmail.com>
@@ -924,8 +943,7 @@ L<Gtk2::Ex::Datasheet::DBI>
 
 =head1 CREDIT
 
-Daniel Kasak
-All this Linker things should have been included in his modules...
+Daniel Kasak, whose modules initiate this work.
 
 =cut
 

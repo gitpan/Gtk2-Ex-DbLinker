@@ -34,6 +34,12 @@ DESCRIPTION
     *   You would then typically connect the buttons to the methods below to
         handle common actions such as inserting, moving, deleting, etc.
 
+SUPPORT
+	Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. 
+	To subscribe to the list or view the archives, go here: 
+	https://groups.google.com/forum/#!forum/gtk2-ex-dblinker. 
+	You may also send emails to gtk2-ex-dblinker@googlegroups.com.
+
 AUTHOR
      François Rappaz <rappazf@gmail.com>
 

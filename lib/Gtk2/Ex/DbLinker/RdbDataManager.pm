@@ -382,7 +382,7 @@ The value for C<data> is a reference to an array of Rose::SB::Object::Manager de
 		my $data = Rdb::Coll::Manager->get_coll(query => [noti => {eq => $self->{noti}}]);
 		my $dman = Linker::RdbDataManager->new({data=> $data, meta => Rdb::Coll->meta });
 
-
+Array references of primary key names and auto incremented primary keys may also be passed using  C<primary_keys>, C<ai_primary_keys> as hash keys. If not given the RdbDataManager uses the metadata to have these.
 
 =head2 C<query( $data );>
 
@@ -436,6 +436,15 @@ Return an array of primary key(s) (auto incremented or not).
 =head2 C<get_autoinc_primarykeys()>;
 	
 Return an array of primary key(s).
+
+=head1 SUPPORT
+
+Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+L<http://groups.google.com/group/gtk2-ex-dblinker>. 
+You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
+
+The current state of the source can be extract using Mercurial from
+L<http://code.google.com/p/gtk2-ex-dblinker/>.
 
 =head1 AUTHOR
 

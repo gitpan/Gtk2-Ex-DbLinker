@@ -7,7 +7,7 @@ WriteMakefile(
     NAME         => 'Gtk2::Ex::DbLinker',
     VERSION_FROM => 'lib/Gtk2/Ex/DbLinker.pm', # finds \$VERSION
     AUTHOR       => 'FranE<ccedil>ois Rappaz (rappazf@gmail.com)',
-    ABSTRACT     => 'Use sql or orm objects with a gtk2 interface',
+    ABSTRACT_FROM => 'lib/Gtk2/Ex/DbLinker.pm',
     PREREQ_PM    => {
                      'Test::More' => 1,
 		     'GLib' => 1.240,

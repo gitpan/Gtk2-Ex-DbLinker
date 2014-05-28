@@ -164,7 +164,7 @@ sub new {
 			($self->{widgets}->{$widget}->{sql_fieldname}?$self->{widgets}->{$widget}->{sql_fieldname}:" undef") );
         	$self->{sql_to_widget_map}->{ $self->{widgets}->{$widget}->{sql_fieldname} || $widget} = $widget;
     }
-   if ( ! exists $self->{primary_keys} ) {
+   if ( ! $self->{primary_keys} ) {
 	   
         eval {
             $sth = $self->{dbh}->primary_key_info( undef, undef, $self->{sql}->{from} )
@@ -709,7 +709,7 @@ sub query {
             my $key_no = 0;
             my @keys;
             foreach my $primary_key ( @{$self->{primary_keys}} ) {
-		       $self->{log}->debug("query : " . $primary_key . " value : " . $row[$key_no] );
+		    # $self->{log}->debug("query : " . $primary_key . " value : " . $row[$key_no] );
                 push @keys, $row[$key_no];
                 $key_no ++;
             }
@@ -879,7 +879,7 @@ sub _fetch_new_slice {
 	if ( $self->{sql}->{order_by} ) {
             $local_sql .= " order by " . $self->{sql}->{order_by};
         }
-	$self->{log}->debug("_fetch_new_slice " . $local_sql);
+	# $self->{log}->debug("_fetch_new_slice " . $local_sql);
 
         eval {
             $self->{records} = $self->{dbh}->selectall_arrayref (
@@ -1040,17 +1040,17 @@ See Version in L<Gtk2::Ex::DbLinker>
 
 To fetch the data from the database
 
-	  my $rdbm = Linker::DbiDataManager->new({
-		 	dbh => $self->{dbh},
+	  my $rdbm = Gtk2::Ex::DbLinker::DbiDataManager->new({
+		 	dbh => $dbh,
 		 	 primary_keys => ["pk_id"],
 		sql =>{from => "jrn",
 			select => "pk_id, field1, field2, field3"
 		},
 	 });
 
-To link the data with a Gtk windows have the Gtk entries ID, or combo ID in the xml glade file set to the name of the database fields: pk_id, field1, field2...
+To link the data with a Gtk windows, have the Gtk entries ID, or combo ID in the xml glade file set to the name of the database fields: pk_id, field1, field2...
 
-	  $self->{linker} = Linker::Form->new({ 
+	  $self->{linker} = Gtk2::Ex::DbLinker::Form->new({ 
 		    data_manager => $rdbm,
 		    builder =>  $builder,
 		    rec_spinner => $self->{dnav}->get_object('RecordSpinner'),
@@ -1060,8 +1060,8 @@ To link the data with a Gtk windows have the Gtk entries ID, or combo ID in the 
 
 To add a combo box in the form:
 
-	  my $dman = Linker::DbiDataManager->new({
-			dbh => $self->{dbh},
+	  my $dman = Gtk2::Ex::DbLinker::DbiDataManager->new({
+			dbh => $dbh,
 			sql => {
 				select => "id, name",
 				from => "table",
@@ -1076,10 +1076,11 @@ C<noed> is the Gtk2combo id in the glade file and the field's name in the table.
     	data_manager => $dman,
     	id => 'noed',
       });
+
 And when all combo or datasheet are added:
 
       $self->{linker}->update;
-  
+
 To change a set of rows in a subform, listen to the on_changed event of the primary key in the main form:
 
 		$self->{subform_a}->on_pk_changed($new_primary_key_value);
@@ -1088,19 +1089,22 @@ In the subform a module:
 
 	sub on_pk_changed {
 		 my ($self,$value) = @_;
-
-			$self->{jrn_coll}->get_data_manager->query({ where =>"pk_value_of_the_bound_table = ?", bind_values => [ $value ]});
+		$self->{jrn_coll}->get_data_manager->query({ where =>"pk_value_of_the_bound_table = ?", 
+								bind_values => [ $value ],
+							   });
+		...
+		}
 
 =head1 DESCRIPTION
 
-This module fetch data from a dabase using DBI and sql commands. A new instance is created using a database handle and sql and this instance is passed to a Gtk2::Ex::DbLinker::Form object or to Gtk2::Ex::DbLinker::Datasheet objet constructors.
+This module fetch data from a dabase using DBI and sql commands. A new instance is created using a database handle and sql string and this instance is passed to a Gtk2::Ex::DbLinker::Form object or to Gtk2::Ex::DbLinker::Datasheet objet constructors.
 
 =head1 METHODS
 
 =head2 constructor
 
-The parameters are passed in a hash reference with the keys C<dbh>, C<sql>, C<primary_keys>.
-The value for C<primary_keys> is an array reference holdings the name of the primary key. The DataManager module does its best to find one if primary_keys is not set.
+The parameters to C<new> are passed in a hash reference with the keys C<dbh>, C<sql>, C<primary_keys>, C<ai_primary_keys>.
+The value for C<primary_keys> and C<ai_primary_keys> are arrays reference holdings the name of the primary key and auto incremented primary keys. The DataManager module does its best to find those if they are not set.  C<dbh>, C<sql> are mandatory.
 The value for C<sql> is a hash reference with the following keys : C<select> or C<select_distinct>, C<from>, C<where>, C<order_by>, C<bind_values>.
 
 The value are
@@ -1181,7 +1185,7 @@ Change the current row for the row at position C<$new_pos>.
 Return the position of the current row, first one is 0.
 
 =head2 C<set_field ( $field_id, $value);>
-	
+
 Sets $value in $field_id. undef as a value will set the field to null.
 
 =head2 C<get_field ( $field_id );>
@@ -1201,12 +1205,21 @@ Return the number of rows.
 Return an array of the field names.
 
 =head2 C<get_primarykeys()>;
-	
+
 Return an array of primary key(s) (auto incremented or not). Can be supplied to the constructor, or are guessed by the code.
 
 =head2 C<get_autoinc_primarykeys();>
-	
+
 Return an array of auto incremented primary key(s). If the names are not supplied to the constructor, the array of primary keys is returned.
+
+=head1 SUPPORT
+
+Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+L<http://groups.google.com/group/gtk2-ex-dblinker>. 
+You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
+
+The current state of the source can be extract using Mercurial from
+L<http://code.google.com/p/gtk2-ex-dblinker/>.
 
 =head1 AUTHOR
 
@@ -1224,7 +1237,6 @@ L<Gtk2::Ex::DBI>
   
 =head1 CREDIT
 
-Daniel Kasak
-All this Linker things should have been included in his modules...
+Daniel Kasak, whose code have been heavily borrowed from, to write this module.
 
 =cut
