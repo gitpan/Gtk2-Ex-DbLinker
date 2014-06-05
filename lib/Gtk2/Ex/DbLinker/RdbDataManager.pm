@@ -9,7 +9,7 @@ use Class::Interface;
 use strict;
 use warnings;
 use  Carp;
-use Data::Dumper;
+#use Data::Dumper;
 
 $Class::Interface::CONFESS = 1;
 

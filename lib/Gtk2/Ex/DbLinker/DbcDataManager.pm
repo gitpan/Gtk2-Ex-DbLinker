@@ -9,7 +9,7 @@ use Class::Interface;
 use strict;
 use warnings;
 use  Carp;
-use Data::Dumper;
+#use Data::Dumper;
 
 $Class::Interface::CONFESS = 1;
 
@@ -72,14 +72,16 @@ sub set_row_pos{
 	if ( ! defined ($self->{row}->{pos})){ 
 		$self->{log}->debug("not data");
 		$found = 0;
-	} elsif ($pos <= $self->{row}->{last_row} + 1 && $pos >=0) {
+	} elsif ($pos < $self->{row}->{last_row} + 1 && $pos >=0) {
 		$self->{row}->{pos}= $pos;
 		# $self->{log}->debug("set_row at pos : " . $pos . " pk: " . join(" ", @{ $self->{data}[$pos] }) . " class: " . $self->{rs}->result_class);	
 		#die Dumper( $self->{data}[$pos] );
 		$self->{current_row} =  $self->{rs}->find(@{ $self->{data}[$pos] });
-	
+	}  elsif ($pos == $self->{row}->{last_row} +1) {
+		$self->{log}->debug("setting current row to undef");
+		$self->{current_row} = undef;
 		
-	} else { $found = 0; croak(" position outside rows limits ");}
+	} else { $found = 0; croak(" position outside rows limits "); }
 	# $self->{log}->debug("set_row_pos current pos: " . $self->{row}->{pos} . " new pos : " . $pos . " last: " . $self->{row}->{last_row} . " count : " . scalar @{ $self->{data}} );
 
 	return $found;
@@ -282,7 +284,7 @@ sub _init {
 		@pk = $table->primary_columns;
 		$self->{primary_keys} = \@pk;
 	}
-	die ("no pk") if (scalar @pk == 0);
+	croak ("can't work without a pk") if (scalar @pk == 0);
 	my @apk;
 	if (! defined $self->{ai_primary_keys}) {
 		foreach my $c (@pk){

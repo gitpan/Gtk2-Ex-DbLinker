@@ -3,5 +3,9 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 0.01 Tue May 20 15:03:43 2014
     - original version; created by ExtUtils::ModuleMaker 0.51
 0.02 Added support informations
+0.03 Added example2_dbc with DBIx::Class, and the database ex1_1 database that holds the table 'speaks' without a counter (pk is composed of the 2 fields langid + countryid).
+	Added example_dbi with uses sql commands and DBI 
+	Bug corrected in DbcDataManager (occured when a new reccord is added)
+	Removed 'use of Data::Dumper;'
 
 

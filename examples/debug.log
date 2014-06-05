@@ -1,0 +1,642 @@
+[65] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[66] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname countryid
+[67] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname country
+[69] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname mainlangid
+[70] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget country fieldname :  undef
+[71] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget countryid fieldname :  undef
+[72] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget mainlangid fieldname :  undef
+[82] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to countries detected primary key : countryid
+[83] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk countryid
+[85] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: countries
+[88] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : country TEXT
+[89] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : countryid INTEGER
+[90] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : mainlangid INTEGER
+[91] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  without arg
+[92] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: countryid
+[93] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: countryid, country, mainlangid
+[94] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select countryid from countries
+[96] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : countryid
+[110] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 116 Gtk2.Ex.DbLinker.Form -  ** New Form object ** 
+[111] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget countryid
+[112] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkEntry countryid with self->changed 
+[113] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget country
+[114] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkEntry country with self->changed 
+[116] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget mainlangid
+[117] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkComboBoxEntry mainlangid with self->changed 
+[118] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 523 Gtk2.Ex.DbLinker.Form - set_recordspinner
+[119] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 543 Gtk2.Ex.DbLinker.Form - recordspinner set
+[120] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[121] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname langid
+[122] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname langue
+[136] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget langid fieldname :  undef
+[137] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget langue fieldname :  undef
+[140] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to langues detected primary key : langid
+[141] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk langid
+[142] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: langues
+[145] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : langid INTEGER
+[146] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : langue TEXT
+[147] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  without arg
+[149] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: langid
+[151] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: langid, langue
+[152] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select langid from langues order by langue
+[154] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : langid
+[156] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 166 Gtk2.Ex.DbLinker.Form - add_combo : dman says cols are : langid langue
+[157] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for langid : integer
+[158] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : integer
+[160] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langid 0 Glib::Int
+[161] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for langue : text
+[162] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : text
+[163] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langue 1 Glib::String
+[164] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 184 Gtk2.Ex.DbLinker.Form - new renderer for 1
+[165] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 197 Gtk2.Ex.DbLinker.Form - Glib::Int Glib::String
+[181] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 219 Gtk2.Ex.DbLinker.Form - add_combo: 14 rows added
+[198] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[199] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname speaksid
+[201] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname countryid
+[202] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname langid
+[203] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget langid fieldname :  undef
+[204] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget countryid fieldname :  undef
+[205] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget speaksid fieldname :  undef
+[208] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to speaks detected primary key : speaksid
+[209] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk speaksid
+[210] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: speaks
+[213] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : langid INTEGER
+[214] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : countryid INTEGER
+[216] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : speaksid INTEGER
+[217] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[218] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[219] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[220] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where countryid = ?
+[222] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[223] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 116 Gtk2.Ex.DbLinker.Form -  ** New Form object ** 
+[224] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget speaksid
+[226] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 506 Gtk2.Ex.DbLinker.Form -  ... not found 
+[227] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget countryid
+[228] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkEntry countryid with self->changed 
+[229] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 505 Gtk2.Ex.DbLinker.Form - bind_on_changed looking for widget langid
+[230] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 510 Gtk2.Ex.DbLinker.Form - bind  GtkComboBoxEntry langid with self->changed 
+[231] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 523 Gtk2.Ex.DbLinker.Form - set_recordspinner
+[232] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 543 Gtk2.Ex.DbLinker.Form - recordspinner set
+[233] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[235] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname langid
+[236] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname langue
+[237] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget langid fieldname :  undef
+[238] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget langue fieldname :  undef
+[241] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to langues detected primary key : langid
+[242] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk langid
+[243] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: langues
+[246] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : langid INTEGER
+[247] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : langue TEXT
+[248] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  without arg
+[249] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: langid
+[250] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: langid, langue
+[251] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select langid from langues order by langue
+[253] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : langid
+[256] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 166 Gtk2.Ex.DbLinker.Form - add_combo : dman says cols are : langid langue
+[257] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for langid : integer
+[258] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : integer
+[259] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langid 0 Glib::Int
+[260] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for langue : text
+[261] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 176 Gtk2.Ex.DbLinker.Form - type : text
+[262] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 179 Gtk2.Ex.DbLinker.Form - add_combo: langue 1 Glib::String
+[263] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 184 Gtk2.Ex.DbLinker.Form - new renderer for 1
+[264] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 197 Gtk2.Ex.DbLinker.Form - Glib::Int Glib::String
+[280] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 219 Gtk2.Ex.DbLinker.Form - add_combo: 14 rows added
+[283] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[284] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname speaksid
+[285] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname countryid
+[286] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname langid
+[287] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget langid fieldname :  undef
+[288] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget countryid fieldname :  undef
+[290] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget speaksid fieldname :  undef
+[292] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to speaks detected primary key : speaksid
+[293] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk speaksid
+[294] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: speaks
+[297] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : langid INTEGER
+[298] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : countryid INTEGER
+[300] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : speaksid INTEGER
+[301] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[302] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[303] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[304] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[306] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[308] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[309] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname countryid
+[310] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 105 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname country
+[311] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget country fieldname :  undef
+[312] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget countryid fieldname :  undef
+[314] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to countries detected primary key : countryid
+[316] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk countryid
+[317] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: countries
+[320] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : country TEXT
+[321] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : countryid INTEGER
+[322] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  without arg
+[323] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: countryid
+[324] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: countryid, country
+[326] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select countryid from countries order by country
+[328] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : countryid
+[330] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 81 Gtk2.Ex.DbLinker.Datasheet - cols: speaksid countryid langid
+[332] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : _status_column_ renderer : status_column
+[333] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : langid renderer : hidden
+[334] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : countryid renderer : combo
+[335] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 155 Gtk2.Ex.DbLinker.Datasheet - auto inc pk: speaksid
+[350] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : _status_column_ 0 ref: Gtk2::CellRendererPixbuf
+[352] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : langid 1 ref: Gtk2::CellRendererText
+[353] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 243 Gtk2.Ex.DbLinker.Datasheet - field name with txt renderer: langid
+[355] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : countryid 2 ref: Gtk2::CellRendererCombo
+[356] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 341 Gtk2.Ex.DbLinker.Datasheet - setup_combo field name : countryid col number :2
+[357] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 360 Gtk2.Ex.DbLinker.Datasheet - setup_combo cols : countryid country
+[358] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for countryid : integer
+[369] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 226 Gtk2.Ex.DbLinker.Datasheet - field name with combo renderer: countryid
+[370] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for countryid : integer
+[371] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 264 Gtk2.Ex.DbLinker.Datasheet -  signal : edited
+[376] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query countryid country mainlangid
+[377] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 1
+[378] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[380] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[381] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[382] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where countryid = ?
+[384] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[386] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[387] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 1
+[389] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[390] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[391] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[392] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[393] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[394] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[397] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[399] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[400] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[401] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[402] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[404] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[405] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[406] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[407] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[408] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[409] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[410] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[411] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[414] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[415] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[416] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[417] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[418] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[420] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[421] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[422] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 9
+[423] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Japan for 9
+[424] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[425] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[427] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 0
+[428] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[429] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[429] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[430] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[431] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[434] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[436] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[437] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[438] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[439] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[440] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[441] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[442] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[444] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[445] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[446] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[447] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[448] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[451] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[452] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[453] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[454] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[455] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[457] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[458] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[459] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 9
+[460] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Japan for 9
+[462] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[463] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: England
+[464] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[466] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[467] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 0
+[6342] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 69 Gtk2.Ex.DbLinker.DbiDataManager - server : SQLite
+[6343] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 148 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname countryid
+[6345] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 148 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname country
+[6346] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 148 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman : fieldname mainlangid
+[6347] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget country fieldname :  undef
+[6348] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget countryid fieldname :  undef
+[6350] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 163 Gtk2.Ex.DbLinker.DbiDataManager - sql_to_widget: widget mainlangid fieldname :  undef
+[6371] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 177 Gtk2.Ex.DbLinker.DbiDataManager - Bound to countries detected primary key : countryid
+[6373] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 194 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman: pk countryid
+[6380] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 239 Gtk2.Ex.DbLinker.DbiDataManager - table: countries
+[6383] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : country TEXT
+[6384] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : countryid INTEGER
+[6386] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 277 Gtk2.Ex.DbLinker.DbiDataManager - DBI_dman col_info  Type_name : mainlangid INTEGER
+[6387] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  without arg
+[6388] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: countryid
+[6389] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: *
+[6391] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select countryid from countries
+[6393] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : countryid
+[6398] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 81 Gtk2.Ex.DbLinker.Datasheet - cols: countryid country mainlangid
+[6399] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for countryid : integer
+[6400] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 108 Gtk2.Ex.DbLinker.Datasheet -  * set field : countryid renderer : number
+[6402] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for country : text
+[6403] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 108 Gtk2.Ex.DbLinker.Datasheet -  * set field : country renderer : 
+[6404] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for mainlangid : integer
+[6405] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 108 Gtk2.Ex.DbLinker.Datasheet -  * set field : mainlangid renderer : number
+[6407] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : _status_column_ renderer : status_column
+[6408] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : countryid renderer : number
+[6409] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 345 Gtk2.Ex.DbLinker.DbiDataManager - Dbi_dman get_field_type for country : text
+[6410] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 133 Gtk2.Ex.DbLinker.Datasheet - reset renderer for field country to text
+[6412] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : country renderer : text
+[6413] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 140 Gtk2.Ex.DbLinker.Datasheet -  ** set field : mainlangid renderer : number
+[6414] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 155 Gtk2.Ex.DbLinker.Datasheet - auto inc pk: countryid
+[6417] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : _status_column_ 0 ref: Gtk2::CellRendererPixbuf
+[6419] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : countryid 1 ref: Gtk2::CellRendererText
+[6420] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 243 Gtk2.Ex.DbLinker.Datasheet - field name with txt renderer: countryid
+[6421] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 246 Gtk2.Ex.DbLinker.Datasheet - not editable because it's a pk
+[6422] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 264 Gtk2.Ex.DbLinker.Datasheet -  signal : edited
+[6424] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : country 2 ref: Gtk2::CellRendererText
+[6425] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 243 Gtk2.Ex.DbLinker.Datasheet - field name with txt renderer: country
+[6426] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 264 Gtk2.Ex.DbLinker.Datasheet -  signal : edited
+[6428] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 187 Gtk2.Ex.DbLinker.Datasheet - Setup tv : field name : mainlangid 3 ref: Gtk2::CellRendererText
+[6429] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 243 Gtk2.Ex.DbLinker.Datasheet - field name with txt renderer: mainlangid
+[6430] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 264 Gtk2.Ex.DbLinker.Datasheet -  signal : edited
+[6432] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 9 rows
+[6433] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[6434] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[6435] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[6436] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[6438] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 1
+[6439] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 0
+[6440] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: England
+[6441] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: England
+[6443] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: England
+[6444] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 0
+[6445] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 1
+[6446] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 1
+[6447] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 1
+[6449] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[6451] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[6452] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[6453] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[6455] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 2
+[6456] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 1
+[6457] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Ireland
+[6458] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Ireland
+[6459] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Ireland
+[6460] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 1
+[6462] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 1
+[6463] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 1
+[6464] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 1
+[6465] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 2
+[6468] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 2
+[6469] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 3
+[6470] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 3
+[6471] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 3
+[6472] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 2
+[6474] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: France
+[6475] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: France
+[6476] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: France
+[6477] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 2
+[6479] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 4
+[6480] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 4
+[6481] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 4
+[6482] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 3
+[6485] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 3
+[6486] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[6487] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 4
+[6488] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 4
+[6489] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 3
+[6491] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Switzerland
+[6492] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Switzerland
+[6493] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Switzerland
+[6495] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 3
+[6496] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 5
+[6497] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 5
+[6498] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 5
+[6499] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 4
+[6502] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 4
+[6503] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 5
+[6504] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 5
+[6506] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 5
+[6507] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 4
+[6508] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Germany
+[6509] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Germany
+[6511] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Germany
+[6512] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 4
+[6513] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 5
+[6514] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 5
+[6516] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 5
+[6517] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 5
+[6519] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 5
+[6521] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 6
+[6522] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 6
+[6523] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 6
+[6524] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 5
+[6526] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Italy
+[6527] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Italy
+[6528] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Italy
+[6529] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 5
+[6530] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 6
+[6532] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 6
+[6533] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 6
+[6534] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 6
+[6537] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 6
+[6538] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 7
+[6539] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 7
+[6540] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 7
+[6542] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 6
+[6543] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Belgique
+[6544] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Belgique
+[6545] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Belgique
+[6547] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 6
+[6548] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 4
+[6549] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 4
+[6550] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 4
+[6552] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 7
+[6554] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 7
+[6555] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 8
+[6556] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 8
+[6558] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 8
+[6559] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 7
+[6560] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Spain
+[6562] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Spain
+[6563] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Spain
+[6564] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 7
+[6565] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 12
+[6567] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 12
+[6568] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 12
+[6569] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 8
+[6571] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 8
+[6573] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[6574] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[6575] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 1 value: 9
+[6577] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: country row: 8
+[6578] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - country x: Japan
+[6579] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - country x: Japan
+[6580] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: country col.: 2 value: Japan
+[6582] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: mainlangid row: 8
+[6583] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 14
+[6584] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - mainlangid x: 14
+[6585] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: mainlangid col.: 3 value: 14
+[6587] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[13142] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 1
+[13147] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[13149] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[13151] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[13152] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[13153] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where countryid = ?
+[13156] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[13158] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[13159] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[13161] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[13162] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[13163] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[13165] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[13166] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[13167] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[13169] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[13171] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[13174] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[13175] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[13176] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[13177] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13179] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13180] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[13181] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[13182] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[13184] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[13185] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[13186] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[13188] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[13190] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[13191] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13193] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13194] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[13195] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[13196] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[13198] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[13199] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 9
+[13200] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Japan for 9
+[13202] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[13203] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[13204] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[13206] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[13207] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[13208] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[13209] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[13211] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[13213] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[13216] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[13217] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[13218] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[13219] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13221] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13222] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[13223] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[13225] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[13226] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[13227] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[13228] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[13230] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[13232] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[13233] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13235] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[13236] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[13237] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[13238] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[13240] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[13241] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 9
+[13242] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Japan for 9
+[13244] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[13245] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: Ireland
+[13246] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[13248] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[13249] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[17621] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 1
+[17624] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[17625] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 3 widget: Gtk2::ComboBoxEntry
+[17626] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[17628] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[17629] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[17630] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[17632] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[17633] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[17635] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[17637] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 0 rows
+[17638] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[17639] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[17641] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[19664] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 0
+[19669] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[19670] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[19672] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[19673] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[19675] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[19676] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[19677] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[19679] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[19681] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[19683] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[19685] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[19686] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[19687] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[19689] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[19690] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[19691] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[19692] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[19694] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[19695] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[19696] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[19697] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[19700] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[19701] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[19702] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[19704] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[19705] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[19706] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[19707] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 9
+[19709] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 9
+[19710] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Japan for 9
+[19711] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[19713] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[19714] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[21271] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 1
+[21274] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 2
+[21275] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 3 widget: Gtk2::ComboBoxEntry
+[21277] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[21278] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[21279] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[21281] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[21282] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[21283] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[21285] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[21287] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 0 rows
+[21288] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[21289] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[21291] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[23486] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 8
+[23489] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 9
+[23491] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[23492] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[23493] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[23494] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where countryid = ?
+[23497] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[23499] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 698 Gtk2.Ex.DbLinker.Form - query speaksid countryid langid
+[23500] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 9
+[23502] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[23503] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[23505] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[23506] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[23507] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[23508] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[23510] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[23512] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[23514] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[23515] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[23517] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[23518] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23519] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23520] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[23522] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[23523] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[23524] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[23525] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[23527] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[23528] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[23530] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[23532] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23533] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23534] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[23535] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[23537] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[23538] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[23539] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[23540] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[23542] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[23543] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[23544] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[23545] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[23547] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[23548] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[23549] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[23551] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[23553] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[23555] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[23556] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[23558] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[23559] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23560] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23561] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[23563] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[23564] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[23565] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[23566] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[23568] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[23569] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[23571] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[23572] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23574] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[23575] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[23576] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[23577] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[23579] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[23580] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[23581] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[23582] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[23584] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: Japan
+[23585] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 14 widget: Gtk2::ComboBoxEntry
+[23586] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[23588] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[27652] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 0
+[27653] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 9
+[27655] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 1 widget: Gtk2::ComboBoxEntry
+[27656] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[27657] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[27659] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[27660] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[27661] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[27662] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[27667] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[27669] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 2 rows
+[27670] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 0
+[27672] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 0
+[27673] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[27674] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[27675] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[27677] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 0
+[27678] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[27679] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 2
+[27680] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 2
+[27682] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : Ireland for 2
+[27683] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 426 Gtk2.Ex.DbLinker.Datasheet - Datasheet query set row pos 1
+[27685] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: langid row: 1
+[27687] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[27688] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - langid x: 1
+[27689] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: langid col.: 1 value: 1
+[27690] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 442 Gtk2.Ex.DbLinker.Datasheet - query: countryid row: 1
+[27692] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 445 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[27693] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 447 Gtk2.Ex.DbLinker.Datasheet - countryid x: 1
+[27694] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 458 Gtk2.Ex.DbLinker.Datasheet - field: countryid col.: 2 value: 1
+[27695] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 729 Gtk2.Ex.DbLinker.Datasheet - found : England for 1
+[27697] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[27698] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[27699] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1
+[29805] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 533 Gtk2.Ex.DbLinker.Form - rs_value changed will move to 1
+[29805] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 571 Gtk2.Ex.DbLinker.Form - set_entry: 9
+[29806] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 589 Gtk2.Ex.DbLinker.Form - set_combo value 14 widget: Gtk2::ComboBoxEntry
+[29807] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[29809] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 683 Gtk2.Ex.DbLinker.Form - get_widget_value: langid
+[29810] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 610 Gtk2.Ex.DbLinker.DbiDataManager - query  with arg 
+[29811] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 645 Gtk2.Ex.DbLinker.DbiDataManager - pks: speaksid
+[29813] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 646 Gtk2.Ex.DbLinker.DbiDataManager - select: speaksid, countryid, langid
+[29814] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 663 Gtk2.Ex.DbLinker.DbiDataManager - 657 local_sql select speaksid from speaks where langid = ? and countryid != ?
+[29816] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/DbiDataManager.pm 706 Gtk2.Ex.DbLinker.DbiDataManager - query primary keys : speaksid
+[29817] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 421 Gtk2.Ex.DbLinker.Datasheet - datasheet query: 0 rows
+[29819] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Datasheet.pm 483 Gtk2.Ex.DbLinker.Datasheet - update done
+[29820] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 554 Gtk2.Ex.DbLinker.Form - set_rs_range  first : 1
+[29821] C:/strawberry/perl/site/lib/Gtk2/Ex/DbLinker/Form.pm 557 Gtk2.Ex.DbLinker.Form - adj lower : 1

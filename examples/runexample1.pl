@@ -5,7 +5,7 @@ use Gtk2 -init;
 use Log::Log4perl;
   Log::Log4perl->init("log.conf"); 
 
-use lib "../lib/";
+#use lib "../lib/";
 
 use Forms::Langues1;
 

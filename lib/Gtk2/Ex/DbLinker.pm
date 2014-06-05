@@ -1,11 +1,10 @@
 
-
 package Gtk2::Ex::DbLinker;
 use strict;
 use warnings;
 
 
-our $VERSION     = '0.02';
+our $VERSION     = '0.03';
 
 1;
 
@@ -18,7 +17,7 @@ Gtk2::Ex::DbLinker - Use sql or orm objects to build a gtk2 Gui
 
 =head1 VERSION
 
-version 0.01
+version  See version at the end of MYMETA.yml
 
 =head1 INSTALLATION
 
@@ -43,10 +42,11 @@ The following modules are required in order to use Gtk2::Ex::Linker
 	Gtk2::Ex::Dialogs => 0.11
 	DBI => 1.631
 	Log::Log4perl => 1.41
-	Rose::DB::Object => 0.809
 
 Install one of Rose::DB::Object or DBIx::Class if you want to use these orm to access your data.
-Rose::DB object is required to get example 2 working.
+
+Rose::DB object is required to get example 2_rdb working.
+DBIx::Class is required to get example 2_dbc working.
 
 =head1 DESCRIPTION
 
@@ -78,8 +78,23 @@ such as inserting, moving, deleting, etc.
 
 =head1 EXAMPLES
 
-The examples folder (located in the Gtk2-Ex-DbLinker-xxx folder under cpan/build in your perl folders tree) contains two examples that use a sqlite database of three tables: countries (countryid, country, mainlangid), 
-langues (langid, langue), speaks (speaksid, langid, countryid).
+The examples folder (located in the Gtk2-Ex-DbLinker-xxx folder under cpan/build in your perl folders tree) contains four examples that use a sqlite database of three tables: 
+
+=over
+
+=item *
+
+countries (countryid, country, mainlangid), 
+
+=item *
+
+langues (langid, langue), 
+
+=item *
+
+speaks (langid, countryid) in example2_dbc, file ./data/ex1_1 or (speaksid, langid, countryid) in example2_dbi and 2_rdb, file ./data/ex1
+
+=back
 
 =over
 
@@ -89,9 +104,23 @@ C<runexample1.pl> runs at the command line, gives a form that uses DBI and sql c
 
 =item *
 
-C<runeexample2.pl> gives a main form with a bottom navigation bar that display each record (a country and its main language) one by one. 
-A subform display other(s) language(s) spoken in that country. Each language is displayed one by one and a second navigation bar is used to show these in turn.
-For each language, a list gives the others countries where this idiom is spoken. Items from this lists are also add/delete/changed with a third "navigation" bar.
+C<runeexample2_xxx.pl> gives a main form with a bottom navigation bar that displays each record (a country and its main language) one by one. 
+
+A subform displays other(s) language(s) spoken in that country. Each language is displayed one by one and a second navigation bar is used to show these in turn.
+
+For each language, a list gives the others countries where this idiom is spoken. Items from this lists are also add/delete/changed with a third navigation bar.
+
+=item *
+
+C<runeexample2_dbc.pl> uses DBIx::Class. The speaks table primary key is the complete row itself, with the two fields, countryid and langid.
+
+=item *
+
+C<runeexample2_dbi.pl> uses sql commands and DBI. The speaks table primary key is a counter speaksid (primary key) and the two fields, countryid and langid compose an index which does not allow duplicate rows.
+
+=item *
+
+C<runeexample2_rdb.pl> uses Rose::Data::Object. The database is the same as example 2_dbi.
 
 =back
 

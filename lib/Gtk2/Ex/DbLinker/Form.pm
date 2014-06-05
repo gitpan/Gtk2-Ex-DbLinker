@@ -158,7 +158,7 @@ sub add_combo{
 	      }
     }
     my $w = $self->{datawidgets}->{$combo->{id}};
-    die unless ($w); 
+     croak('no widget found for combo ' . $combo->{id}) unless ($w); 
     my @col;
     if ( ! defined $combo->{fields}) {
 	    #@col    = get_columns($self, $combo->{data}->[0]->meta) if ($combo->{data}->[0]);

@@ -9,7 +9,7 @@ use Class::Interface;
 use strict;
 use warnings;
 use  Carp;
-use Data::Dumper;
+#use Data::Dumper;
 
 use Glib qw/TRUE FALSE/;
 
@@ -339,7 +339,7 @@ sub get_field_type{
 		 $type = lc($self->{column_info}->{$fieldname}->{TYPE_NAME});
 		$type = ($fieldtype{$type} ? $fieldtype{$type} : $type);
 	} else {
-		$self->{log}->debug (Dumper $self->{column_info});
+		#$self->{log}->debug (Dumper $self->{column_info});
 		$type = "varchar";
 	}
 	$self->{log}->debug("Dbi_dman get_field_type for ".   $fieldname . " : " . $type);
