@@ -1005,6 +1005,7 @@ sub count {
     }
     
 }
+
 1;
 
 __END__
@@ -1043,7 +1044,7 @@ To fetch the data from the database
 	  my $rdbm = Gtk2::Ex::DbLinker::DbiDataManager->new({
 		 	dbh => $dbh,
 		 	 primary_keys => ["pk_id"],
-		sql =>{from => "jrn",
+		sql =>{from => "mytable",
 			select => "pk_id, field1, field2, field3"
 		},
 	 });
@@ -1070,14 +1071,14 @@ To add a combo box in the form:
 		});
 
 The first field given in the select value will be used as the return value of the combo.
-C<noed> is the Gtk2combo id in the glade file and the field's name in the table.
+C<noed> is the Gtk2combo id in the glade file and the field's name in the table displayed in the form.
 
     $self->{linker}->add_combo({
     	data_manager => $dman,
     	id => 'noed',
       });
 
-And when all combo or datasheet are added:
+And when all combos or datasheets are added:
 
       $self->{linker}->update;
 
@@ -1085,7 +1086,7 @@ To change a set of rows in a subform, listen to the on_changed event of the prim
 
 		$self->{subform_a}->on_pk_changed($new_primary_key_value);
 
-In the subform a module:
+In the subform_a module:
 
 	sub on_pk_changed {
 		 my ($self,$value) = @_;
@@ -1097,14 +1098,14 @@ In the subform a module:
 
 =head1 DESCRIPTION
 
-This module fetch data from a dabase using DBI and sql commands. A new instance is created using a database handle and sql string and this instance is passed to a Gtk2::Ex::DbLinker::Form object or to Gtk2::Ex::DbLinker::Datasheet objet constructors.
+This module fetches data from a dabase using DBI and sql commands. A new instance is created using a database handle and sql string and this instance is passed to a Gtk2::Ex::DbLinker::Form object or to Gtk2::Ex::DbLinker::Datasheet objet constructors.
 
 =head1 METHODS
 
 =head2 constructor
 
 The parameters to C<new> are passed in a hash reference with the keys C<dbh>, C<sql>, C<primary_keys>, C<ai_primary_keys>.
-The value for C<primary_keys> and C<ai_primary_keys> are arrays reference holdings the name of the primary key and auto incremented primary keys. The DataManager module does its best to find those if they are not set.  C<dbh>, C<sql> are mandatory.
+The value for C<primary_keys> and C<ai_primary_keys> are arrayrefs holding the field names of the primary key and auto incremented primary keys. The DataManager module does its best to find those if they are not set.  C<dbh>, C<sql> are mandatory.
 The value for C<sql> is a hash reference with the following keys : C<select> or C<select_distinct>, C<from>, C<where>, C<order_by>, C<bind_values>.
 
 The value are
@@ -1232,11 +1233,14 @@ Copyright (c) 2014 by F. Rappaz.  All rights reserved.  This program is free sof
 =head1 SEE ALSO
 
 L<Gtk2::Ex::DbLinker::Forms>
+
 L<Gtk2::Ex::DbLinker::Datasheet>
+
 L<Gtk2::Ex::DBI>
-  
+ 
 =head1 CREDIT
 
 Daniel Kasak, whose code have been heavily borrowed from, to write this module.
 
 =cut
+

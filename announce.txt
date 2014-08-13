@@ -1,0 +1,88 @@
+
+
+comp.lang.perl.modules@googlegroups.com; gtk-perl-list-bounces@gnome.org; comp.lang.perl.announce@googlegroups.com; rose-db-object@googlegroups.com; dbix-class@lists.scsys.co.uk
+
+
+
+ANNOUNCE: Gtk2::Ex::DbLinker
+
+
+Gtk2::Ex::DbLinker version 0.05 is available on CPAN.
+
+
+Full source is available at 
+http://code.google.com/p/gtk2-ex-dblinker/.
+
+
+DESCRIPTION
+
+     This module automates the process of tying data from a database to widgets on a Glade-generated form. 
+     All that is required is that you name your widgets the same as the fields in your data source.
+
+    Steps for use:
+
+    - Create a DataManager object that contains the rows to display. Use DbiDataManager, RdbDataManager or DbcDataManager 
+      depending on how you access the database: sql commands and DBI, DBIx::Class or Rose::DB::Object
+
+    - Create a Gtk2::GladeXML object to construct the Gtk2 windows
+
+    - Create a Gtk2::Ex::DbLinker::Form object that links the data and the windows
+
+    You would then typically connect the buttons to the methods below to handle common actions such as inserting, moving, deleting, etc.
+
+
+EXAMPLES
+
+    Files using DBIx::Class, Rose::DB::Object, DBI and sql commands show how to acces a SQLite database.
+
+SYNOPSIS
+
+	#example using DBIx::Class object
+
+        use Gtk2 -init;
+        use Gtk2::GladeXML;
+        use Gtk2::Ex:Linker::DbcDataManager;
+
+        use My::Schema;
+        use Gtk2::Ex::DbLinker::DbcDataManager;
+
+        my $builder = Gtk2::Builder->new();
+        $builder->add_from_file($path_to_glade_file);
+
+	# create a DBIx::Class::ResultSet object
+        my $resultset = $schema->resultset('MyTable'); 
+   
+	# and pass it to the DbcDataManager constructor
+        my $dbcm = Gtk2::Ex::DbLinker::DbcDataManager->new({rs => $resultset } );
+
+	# create a form object that pull together the xml glade file and 
+	# the row to display from the DbcDataManager
+        my $form = Linker::Form->new({ 
+		    data_manager => $dbcm,
+		    builder =>  $builder,
+		 ...
+	    });
+
+	# populate combo box using rows from another DbcDataManager
+	$form->add_combo({
+	    	data_manager => $dman,
+    		id => 'nameid',
+		fields => ["nameid", "name"],
+ 		});
+
+	$form->update;
+
+	# to display a new set of rows
+	# get a new ResultSet object and pass it to query
+	my $rs = $self->{schema}->resultset('Table')->search_rs({FieldA=> $fieldA_value},  {order_by => 'FieldB'});
+	$form->get_data_manager->query($rs);
+	$form->update;
+
+
+SUPORT
+
+    Any Gk2::Ex::DbLinker questions or problems can be posted to the the mailing list. To subscribe to the list or view the archives, go here: 
+    http://groups.google.com/group/gtk2-ex-dblinker 
+    You may also send emails to gtk2-ex-dblinker@googlegroups.com. 
+
+

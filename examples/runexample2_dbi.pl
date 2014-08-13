@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use Gtk2 -init;
-use Dbc::Schema;
+# use Dbc::Schema;
 
 #use lib "../lib/";
 use DBI;

@@ -7,5 +7,10 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 	Added example_dbi with uses sql commands and DBI 
 	Bug corrected in DbcDataManager (occured when a new reccord is added)
 	Removed 'use of Data::Dumper;'
-
+0.05 Form::add_combo corrected use of set_text_column
+0.06 Form::add_combo delete existing model 
+     DbcDataManager 
+	new parameters columns => {name =>type} which replace the call to $rs->result_source->columns to supplied the column's names and types
+	+columns => {name => type} the columns supplied are added to those found with  $rs->result_source->columns. 
+	if a primary_keys array ref is supplied the search of the row at a given pos is done with $rs->search, not $rs->find
 

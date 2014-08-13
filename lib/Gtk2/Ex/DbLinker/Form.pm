@@ -16,6 +16,10 @@ boolean =>  "Glib::Boolean",
 date => "Glib::String",
 serial=> "Glib::Int",
 text => "Glib::String",
+smallint => "Glib::Int",
+mediumint => "Glib::Int",
+timestamp => "Glib::String",
+enum => "Glib::String",
 
 );
 my %signals = (
@@ -112,7 +116,7 @@ sub _init {
 	$self->{rec_count_label} = (ref $self->{rec_count_label} ? $self->{rec_count_label} : $self->{builder}->get_object( $self->{rec_count_label} ));
 	$self->{status_label} = (ref $self->{status_label} ?  $self->{status_label} : $self->{builder}->get_object( $self->{status_label} ));
 
-	$self->{log} = Log::Log4perl->get_logger("Gtk2::Ex::DbLinker::Form");
+	$self->{log} = Log::Log4perl->get_logger(__PACKAGE__);
 	$self->{log}->debug(" ** New Form object ** ");
 	$self->{changed} = 0;
 	if (! defined $self->{cols}){
@@ -139,61 +143,89 @@ sub add_combo{
 	};
 
      my $column_no = 0;
+     my @cols;
+     if ( defined $combo->{fields}) {
+		 @cols= @{$combo->{fields}};
+	} else {
+		@cols =  $combo->{dman}->get_field_names;
+
+	}
     my @list_def;
     if ( $$req{builder} && (ref $self eq "")){ #static init
 	  
 	$self = {};
 	$self->{builder} = $$req{builder};
-	my @cols = $combo->{dman}->get_field_names;
-	$self->{cols} = \@cols;
+
 	$self->{log} = Log::Log4perl->get_logger("Gtk2::Ex::DbLinker::Form");
-	$self->{log}->debug("cols: " . join(" ", @{$self->{cols}}));        
+      
 	 my $w = $self->{builder}->get_object($combo->{id});
 	 if ($w)   {
 		 my $name = $w->get_name;
  		$self->{datawidgets}->{ $combo->{id} } = $w;
 		$self->{datawidgetsName}->{ $combo->{id} }= $name;	
-	      } else {
-		      croak "no widget found for combo " . $combo->{id};
-	      }
+	 } else {
+	      croak "no widget found for combo " . $combo->{id};
+	 }
     }
+
+	$self->{log}->debug("cols: " . join(" ", @cols));  
     my $w = $self->{datawidgets}->{$combo->{id}};
      croak('no widget found for combo ' . $combo->{id}) unless ($w); 
-    my @col;
-    if ( ! defined $combo->{fields}) {
-	    #@col    = get_columns($self, $combo->{data}->[0]->meta) if ($combo->{data}->[0]);
-	    @col = $combo->{dman}->get_field_names;
-	    $self->{log}->debug("add_combo : dman says cols are : " . join(" ", @col));
-    } else {
-	 @col = @{$combo->{fields}} ;  
-    }
-    
-   croak ("no fields found for combo $combo->{id}") unless(@col);
 
-    foreach my $field ( @col ) {
+     #my @col = @{$self->{cols}};
+   croak ("no fields found for combo $combo->{id}") unless(@cols);
+    my $lastfield = @cols;
+    #the column to show is either the first (pos 0) if it's the only column or
+    #the first ( and the next ) 
+    
+    my $displayedcol = ($lastfield > 1 ? 1 : 0);
+    $w->set_text_column( $displayedcol );
+    my $model = $w->get_model;
+
+
+    foreach my $field ( @cols ) {
 	#push @list_def, "Glib::String"; 
 	my $type =  $combo->{dman}->get_field_type($field);
-	$self->{log}->debug("type : " . $type);
-	my  $gtype = $fieldtype{ $type };
+	my  $gtype = $fieldtype{ $type } if ($type);
+	if ($gtype) {
+
+		$self->{log}->debug("field: " . $field . " type : " . $type);
+	} else {
+		warn ("no Glib type found for $field");
+		$gtype = "Glib::String";
+	}
 	push @list_def, $gtype;
         $self->{log}->debug("add_combo: $field $column_no $gtype");
-        # Add additional renderers for columns if defined
-        # We only want to do this the 1st time ( renderers_setup flag ), otherwise we get lots of renderers 
-        	if ( $column_no > 0 && ! $combo->{renderers_setup} ) {
+
+	
+	
+	#column 0 is not shown unless it's the only column
+
+	#column 1 is display in the entrycompletrion code below
+	#column above 1 are displayed here:
+	if ( ( ! defined $model) && $column_no > 1 ) {
 			
              		$self->{log}->debug("new renderer for $column_no");
             		my $renderer = Gtk2::CellRendererText->new;
-		            $w->pack_start( $renderer, FALSE );
+		            $w->pack_start( $renderer, TRUE);
 			    # $self->{log}->debug("add_combo: " . $field . " set text for " . $column_no);
-			    # done below with the entrycompletion setup
-			    # $w->set_attributes( $renderer, 'text' => $column_no );
+			 $w->set_attributes( $renderer, 'text' => $column_no );
+			 #$combo->{renderers_setup} = 1;
             
-        	}
-        	$column_no ++;
 	}
-    	$combo->{renderers_setup} = 1;
 
-	my $model = Gtk2::ListStore->new( @list_def );
+      $column_no ++;
+      } #for each
+	#$combo->{renderers_setup} = 1;
+
+	if ($model) {
+		$self->{log}->debug("clearing existing model");
+		$model->clear;
+		
+	} else {
+		$model = Gtk2::ListStore->new( @list_def );
+		$w->set_model($model);
+	}
 	$self->{log}->debug(join(" ", @list_def));
 	my $i;
 	 my $last = $combo->{dman}->row_count -1 ;
@@ -206,33 +238,32 @@ sub add_combo{
         	my $column = 0;
         	push @model_row, $model->append;
         
-        	foreach my $field ( @col ) {
+        	foreach my $field ( @cols ) {
 			#push @model_row, $column, $row->{$field};
 		  my $value =  $combo->{dman}->get_field($field);
 		  #$self->{log}->debug("add_combo: " . $value);
 		   push @model_row, $column++, $value;
 		   #$column ++;
         	}
-		#$self->{log}->debug("row : " . join(" ", @model_row));
+		$self->{log}->debug("row : " . join(" ", @model_row));
 	        $model->set( @model_row );
 	}
 	$self->{log}->debug("add_combo: " . $i . " rows added");
-
-	$w->set_model($model);
+	
+	
 
 	if ($self->{datawidgetsName}->{$combo->{id}} eq "GtkComboBoxEntry" ){
 		#if ( ! $self->{combos_set}->{$combo->{id}} ) {
-			$w->set_text_column( 1 );
+		#$w->set_text_column( 1 );
 		#$self->{combos_set}->{ $combo->{id} } = TRUE;
 		  #}
 		   my $entrycompletion = Gtk2::EntryCompletion->new;
 		  $entrycompletion->set_minimum_key_length( 1 );
 		  $entrycompletion->set_model( $model );
-		  $entrycompletion->set_text_column( 1 );
+		  $entrycompletion->set_text_column( $displayedcol );
 		  $w->get_child->set_completion( $entrycompletion );
 	
 	}
-
 
 } #sub
 
@@ -695,7 +726,7 @@ sub get_widget_value {
 sub update{
 	my ($self) =  @_;
 	my @col = $self->{dman}->get_field_names;
-	$self->{log}->debug("query " . (@col ? join(" " , @col) : " cols undef "));
+	$self->{log}->debug("update cols are " . (@col ? join(" " , @col) : " cols undef "));
 	if ( $self->{dman}->row_count > 0) {
 		$self->_display_data(0); 
 	} else {
@@ -779,22 +810,19 @@ See Version in L<Gtk2::Ex::DbLinker>
 
 	 my $builder = Gtk2::Builder->new();
 	 $builder->add_from_file($path_to_glade_file);
+	 $builder->connect_signals($self);
 
-This gets the Rose::DB::Object::Manager (we could have use plain sql command, or DBIx::Class object instead), and the DataManager object we pass to the datasheet constructor.
+This gets the Rose::DB::Object::Manager (we could have use plain sql command, or DBIx::Class object instead), and the DataManager object we pass to the form constructor.
 
-	my $data = Rdb::Coll::Manager->get_coll(query => [noti => {eq => $self->{noti}}]);
+	my $data = Rdb::Mytable::Manager->get_mytable(query => [pk_field => {eq => $value]);
 
-	my $dman = Linker::RdbDataManager->new({data=> $data, meta => Rdb::Coll->meta });
+	my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data=> $data, meta => Rdb::Mytable->meta });
 
-This create the datasheet.
-rec_spinner, status_label, rec_count_label are Gtk2 widget used to display the position of the current record. See the C<runexample2.pl> in the examples folder for more details. 
-date_formatters receives a hash of id for the Gtk2::Entries in the Glade file (keys) and an arrays (values) of formating strings to read-write the database (pos 0) and to display in the form (pos 1). time_zone and locale are needed by Date::Time::Strptime.
-
-
+This create the form.
 
 		$self->{form_coll} = Gtk2::Ex::DbLinker::Form->new({
 			data_manager => $dman,
-			meta => Rdb::Coll->meta,
+			meta => Rdb::Mytable->meta,
 			builder => 	$builder,
 		  	rec_spinner => $self->{dnav}->get_object('RecordSpinner'),
 	    		status_label=>  $self->{dnav}->get_object('lbl_RecordStatus'),
@@ -806,6 +834,28 @@ date_formatters receives a hash of id for the Gtk2::Entries in the Glade file (k
 			time_zone => 'Europe/Zurich',
 			locale => 'fr_CH',
 	    });
+
+
+C<rec_spinner>, C<status_label>, C<rec_count_label> are Gtk2 widget used to display the position of the current record. See one of the example 2 files in the examples folder for more details. 
+C<date_formatters> receives a hash of id for the Gtk2::Entries in the Glade file (keys) and an arrays (values) of formating strings.
+
+In this array
+
+=over
+
+=item *
+
+pos 0 is the date format of the database.
+
+=item * 
+
+pos 1 is the format to display the date in the form. 
+
+=back
+
+C<time_zone> and C<locale> are needed by Date::Time::Strptime.
+
+
 
 To display new rows on a bound subform, connect the on_changed event to the field of the primary key in the main form.
 In this sub, call a sub to synchonize the form:
@@ -832,19 +882,19 @@ In the subform_a module
 =head2 Dealing with many to many relationship 
 
 It's the sellers and products situation where a seller sells many products and a product is selled by many sellers.
-One way is to have a insert statement that insert a new row in the linking table (say transaction) each time a new row is added in the product table.
+One way is to have a insert statement that insert a new row in the linking table (named transaction for example) each time a new row is added in the product table.
 
 An other way is to create a data manager for the transaction table
 
 With DBI
 
-	$dman = Linker::DbiDataManager->new({ dbh => $self->{dbh}, sql =>{select =>"no_seller, no_product", from => "transaction", where => ""}});
+	$dman = Gtk2::Ex::DbLinker::DbiDataManager->new({ dbh => $self->{dbh}, sql =>{select =>"no_seller, no_product", from => "transaction", where => ""}});
 
 With Rose::DB::Object
 
 	$data = Rdb::Transaction::Manager->get_transaction(query=> [no_seller => {eq => $current_seller }]);
 
-	$dman = Linker::RdbDataManager->new({data => $data, meta=> Rdb::Transaction->meta});
+	$dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $data, meta=> Rdb::Transaction->meta});
 
 And keep a reference of this for latter
 
@@ -1080,4 +1130,5 @@ Daniel Kasak, whose modules initiate this work.
 =cut
 
 1;
+
 

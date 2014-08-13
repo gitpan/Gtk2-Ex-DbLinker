@@ -752,7 +752,8 @@ Gtk2::Ex::DbLinker::Datasheet -  a module that display data from a database in a
 
 =head1 VERSION
 
-See Version in L<Gtk2::Ex::DbLinker>
+See Version in 
+L<Gtk2::Ex::DbLinker>
 
 =head1 SYNOPSIS
 
@@ -760,22 +761,22 @@ This display a table having to 6 columns: 3 text entries, 2 combo, 1 toogle, we 
 
 This gets the Rose::DB::Object::Manager (we could have use plain sql command, or DBIx::Class object) 
 
-    	my $datasheet_rows = Rdb::Vtlsfm::Manager->get_vtlsfm(sort_by => 'nofm');
+    	my $datasheet_rows = Rdb::Mytable::Manager->get_mytable(sort_by => 'field1');
 
 This object is used to instanciante a RdbDataManager, that will be used in the datasheet constructor.
 
-      	my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $datasheet_rows, meta => Rdb::Vtlsfm->meta });
+      	my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $datasheet_rows, meta => Rdb::Mytable->meta });
 
 We create the RdbDataManager for the combo rows
      
-       	my $biblio_data = Rdb::Biblio::Manager->get_biblio( select => [qw/t1.id t1.nom/], sort_by => 'nom');
-	my $dman_combo_biblio = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $biblio_data, meta => Rdb::Biblio->meta});
+       	my $combo_data = Rdb::Combotable::Manager->get_combotable( select => [qw/t1.id t1.name/], sort_by => 'name');
+	my $dman_combo_1 = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $combo_data, meta => Rdb::Combotable->meta});
 
 
-	my $ed_data =  Rdb::Ed::Manager->get_ed( sort_by => 'nom');
-	my $dman_combo_ed = Gtk2::Ex::DbLinker::RdbDataManager->new({ 
-					     		data =>$ed_data,
-						        meta => Rdb::Ed->meta,
+	my $combo2_data =  Rdb::Combotable2::Manager->get_combotable2( sort_by => 'country');
+	my $dman_combo_2 = Gtk2::Ex::DbLinker::RdbDataManager->new({ 
+					     		data =>$combo2_data,
+						        meta => Rdb::Combotable2->meta,
 							});
 
 We create the Datasheet object with the columns description
@@ -784,21 +785,21 @@ We create the Datasheet object with the columns description
 
 	$self->{datasheet} = Gtk2::Ex::DbLinker::Datasheet->new({
 		treeview => $treeview,
-		fields => [{name=>"nofm", renderer=>"text"},
-			{name=>"reroid"}, 
+		fields => [{name=>"field1", renderer=>"text"},
+			{name=>"field2"}, 
 			{name=>"url", renderer=>"text", custom_render_functions => [sub {display_url (@_, $self);},]},
-			{name => 'biblio', renderer => 'combo', data_manager => $dman_combo_biblio, fieldnames=>["id", "nom"]},
-			{name => 'ed', renderer => 'combo', 
-				     data_manager=> $dman_combo_ed,
-					fieldnames=>["id", "nom"]}, 
+			{name => 'nameid', renderer => 'combo', data_manager => $dman_combo_1, fieldnames=>["id", "name"]},
+			{name => 'countryid', renderer => 'combo', 
+				     data_manager=> $dman_combo_2,
+					fieldnames=>["id", "country"]}, 
 			{name => 'idle', renderer => 'toggle'},
 				],
 		data_manager => $dman,		
 	});
 
-To change a set of rows in the table when we navigate between records for example. The primary key of the current record is hold in $primarykey_value :
+To change a set of rows in the table when we navigate between records for example, we fetch the rows using a object derived from Rose::DB::Object::Manager and pass it to the Gt2::Ex::DbLinker::RdbDatamanager object using the query method:
 
-	  my $data =  Rdb::Vtlsfm::Manager->get_vtlsfm(query =>[nofm =>{eq=> $primarykey_value}], sort_by => 'primarykey');
+	  my $data =  Rdb::Mytable::Manager->get_mytable(query =>[pk_field =>{eq=> $primarykey_value}], sort_by => 'field1');
 	  $self->{dataseet}->get_data_manager->query($data);
 
 	  $self->{datasheet}->update();
@@ -857,7 +858,7 @@ C<fields> a reference to an array of hash. Each hash has the following key / val
 
 =item *
 
-C<name> / id of the field to display.
+C<name> / name of the field to display.
 
 =item *
 
@@ -871,11 +872,11 @@ if the renderer is a combo the following key / values are needed in the same has
 
 =item *
 
-C<data_manager> / an instance holding the rows.
+C<data_manager> / an instance holding the rows of the combo.
 
 =item *
 
-C<fieldnames> / a reference to an array of the fields that populate the combo. The first one is the return value.
+C<fieldnames> / a reference to an array of the fields that populate the combo. The first one is the return value that correspond to the field given in C<name>.
 
 =back
 

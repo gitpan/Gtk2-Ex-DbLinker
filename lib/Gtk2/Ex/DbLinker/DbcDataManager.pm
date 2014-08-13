@@ -32,12 +32,15 @@ sub new {
 		rs => $$req{rs},
 		primary_keys => $$req{primary_keys},
 		ai_primary_keys => $$req{ai_primary_keys},
+		cols_types => $$req{columns},
+		'+cols_types' => $$req{'+columns'},
+
 
 	 };
 	 $self->{log} = Log::Log4perl->get_logger(__PACKAGE__);
 
 	 bless $self, $class;
-	
+	$self->{cols} = [];	
 	$self->_init;
 	 $self->_init_pos;
 
@@ -47,7 +50,7 @@ sub new {
 sub query{
 	my ($self, $rs) =  @_;
 		$self->{rs} = $rs;
-	$self->{log}->debug("query " . ($self->{cols} ? @{$self->{cols}} : " cols undef "));
+	$self->{log}->debug("query " . ($self->{cols} ? "cols: ". join( " " , @{$self->{cols}}) : " cols undef "));
 	#try to initiate cols as long as it's not done (the array referer by $self->{cols} is empty)
 	#the line defined cols the first time a row is fetched
 	# print Dumper($self->{cols});
@@ -58,7 +61,7 @@ sub query{
 		# print Dumper($pkr);
 		foreach my $pkn (@{$self->{primary_keys}}){
 			my $i = 0;
-			$self->{log}->debug( "pk name: " . $pkn . " pk value : " . $$pkr[$i++] );
+			#$self->{log}->debug( "pk name: " . $pkn . " pk value : " . $$pkr[$i++] );
 		}
 	}
 
@@ -76,7 +79,25 @@ sub set_row_pos{
 		$self->{row}->{pos}= $pos;
 		# $self->{log}->debug("set_row at pos : " . $pos . " pk: " . join(" ", @{ $self->{data}[$pos] }) . " class: " . $self->{rs}->result_class);	
 		#die Dumper( $self->{data}[$pos] );
-		$self->{current_row} =  $self->{rs}->find(@{ $self->{data}[$pos] });
+		my $r;
+		if ( $self->{usefind} ) {
+			 $r =  $self->{rs}->find(@{ $self->{data}[$pos] });
+		} else {
+			
+			my %h;
+			my @vals = @{$self->{data}[$pos]};
+			my $i=0;
+			for my $key (@{$self->{primary_keys}}){
+				$h{"me." . $key} = $vals[$i++];	
+			}
+			#print Dumper(%h);
+			$r = $self->{rs}->search(\%h)->single();	
+		
+		}
+		croak ("Can't set current row for value(s) " . join(" " , @{ $self->{data}[$pos] }) . " at pos " . $pos ) unless (defined $r);
+		 $self->{current_row} = $r;
+		 
+		
 	}  elsif ($pos == $self->{row}->{last_row} +1) {
 		$self->{log}->debug("setting current row to undef");
 		$self->{current_row} = undef;
@@ -210,7 +231,7 @@ sub row_count{
 	my $self = shift;
 	my $hr =  $self->{row};
 	my $count = scalar @{$self->{data}};
-	$self->{log}->debug("row_count last pos : " . ($hr->{last_row} ? $hr->{last_row}  : -1) . " count: " . $count);
+	$self->{log}->debug("row_count last pos : " . ( defined $hr->{last_row} ? $hr->{last_row}  : -1) . " count: " . $count);
 	return $count;
 
 }
@@ -265,6 +286,7 @@ sub _init_pos {
 #$self->{data}= \@pks;
 	
 	my $count = scalar @{ $self->{data} };
+
 	 if ($count > 0) {
 		
 		$self->{row} = {pos=>0, last_row => $count -1 };
@@ -280,11 +302,15 @@ sub _init {
 	my $table = $rs->result_source;
 	$self->{class} =  $rs->result_class;
 	my @pk;
-	if (! defined $self->{primary_keys}) {	
+	if (! defined $self->{primary_keys}) {
+		$self->{usefind} = 1;	
 		@pk = $table->primary_columns;
 		$self->{primary_keys} = \@pk;
+	} else {
+		$self->{usefind} = 0;
+		$self->{log}->debug("primary_keys defined by caller as ", join(" ", @{$self->{primary_keys}}));
 	}
-	croak ("can't work without a pk") if (scalar @pk == 0);
+	croak ("can't work without a pk") if (scalar @{$self->{primary_keys}} == 0);
 	my @apk;
 	if (! defined $self->{ai_primary_keys}) {
 		foreach my $c (@pk){
@@ -295,16 +321,35 @@ sub _init {
 		}
 		$self->{ai_primary_keys} =  \@apk;
 	}
-
-	my @cols = $table->columns;
-	$self->{cols} = \@cols;
-
-	foreach my $id (@{$self->{cols}}){
-		my $type =  $table->column_info($id)->{data_type};
-		$type = ( exists $fieldtype{$type} ? $fieldtype{$type} : $type);
-		$self->{log}->debug("Dbc_dman_init: field " . $id . " type: " . $type);
-		$self->{fieldsDBType}->{$id}=  $type;
+	my @cols;
+	if ( ! defined $self->{cols_types}) {
+		
+		@cols = $table->columns;
+		#$self->{cols} = \@cols;
+		foreach my $id (@cols){
+			my $type =  $table->column_info($id)->{data_type};
+			$type = ( exists $fieldtype{$type} ? $fieldtype{$type} : $type);
+			$self->{log}->debug("Dbc_dman_init: field " . $id . " type: " . $type);
+			$self->{fieldsDBType}->{$id}=  $type;
+		}
+		if ( defined $self->{'+cols_types'}) {
+			my %h = %{$self->{'+cols_types'}};
+			for my $col ( keys %h){
+				push @cols, $col;
+				$self->{fieldsDBType}->{$col} =  $h{$col};
+			}
+		}
+	} else {
+		my %h = %{$self->{cols_types}};
+		for my $col ( keys %h){
+			push @cols, $col;
+			$self->{fieldsDBType}->{$col} =  $h{$col};
+		}
+		#$self->{cols} = \@cols;
 	}
+
+	$self->{cols} = \@cols;	
+
 }
 
 sub _move {
@@ -384,7 +429,7 @@ To link the data with a Gtk window, the Gtk entries id in the glade file have to
 To add a combo box in the form, the first field given in fields array will be used as the return value of the combo. 
 noed is the Gtk2combo id in the glade file and the field's name in the table that received the combo values.
 	 
-	my $dman = Linker::DbcDataManager->new({rs => $self->{schema}->resultset('Ed')->search_rs( undef, {order_by => ['nom']} ) } );
+	my $dman = Gtk2::Ex::DbLinker::DbcDataManager->new({rs => $self->{schema}->resultset('Ed')->search_rs( undef, {order_by => ['nom']} ) } );
 
 
 	$self->{linker}->add_combo({
@@ -429,7 +474,29 @@ The value for C<rs> is a DBIx::Class::ResultSet object.
 		
 		my $dman = Gtk2::Ex::DbLinker::DbcDataManager->new({ rs => $rs});
 
-Array references of primary key names and auto incremented primary keys may also be passed using  C<primary_keys>, C<ai_primary_keys> as hash keys. If not given the DbcDataManager uses the metadata to have these.
+Array references of primary key names and auto incremented primary keys may also be passed using  C<primary_keys>, C<ai_primary_keys> as hash keys. If not given the DbcDataManager uses the primary key from the Ressource object.
+You have to give the primary key when you use join. For example to have a list of customer's names that have passed orders, you will define a join between the table orders and customers with
+
+	my $href =  { join => ['ComUser'] ,
+		distinct => 1 ,
+		order_by => ['ComUser.name', 'ComUser.givename'],
+		columns => [{id_user => 'ComUser.id_user'},{name => 'ComUser.name'},{givename => 'ComUser.givenname'}],
+	};
+	my $table =  $self->{schema}->resultset('Order');
+	my $rs = $table->search_rs({}, $href);
+
+ComUser and ComCred are the relationships described in the ::Result::Order package.
+You will build a datamanager from the User and Order tables with
+
+	my $dman = Gtk2::Ex::DbLinker::DbcDataManager->new({ 
+		rs => $rs, 
+		primary_keys => ['id_user'], 
+		columns => {id_user => 'integer', name => 'varchar', givename => 'varchar'}, 
+	});
+
+The fields are taken from a call to C<$resultset->result_source> and when you join two tables this is not always the fields you are intersted in.
+You may pass a C<columns> as a hash ref where the keys are the names of the fields and the values are the type (varchar, char, integer,boolean, date, serial, text, smallint, mediumint, timestamp, enum).
+Likewise, C<'+columns'> with a similar hash ref will add the fields (from the join table) to those that are derived from  C<$resultset->result_source>.
 
 =head2 C<query( $rs );>
 
@@ -504,7 +571,9 @@ Copyright (c) 2014 by FranE<ccedil>ois Rappaz.  All rights reserved.  This progr
 =head1 SEE ALSO
 
 L<Gtk2::Ex::DbLinker::Forms>
+
 L<Gtk2::Ex::DbLinker::Datasheet>
+
 L<DBIx::Class>
   
 =head1 CREDIT
@@ -512,4 +581,5 @@ L<DBIx::Class>
 The authors of L<DBIx::Class> !
 
 =cut
+
 

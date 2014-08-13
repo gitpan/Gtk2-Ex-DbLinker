@@ -316,21 +316,21 @@ Instanciation of a RdbManager object is a two step process:
 
 use a Rose::DB::Object::Manager derived object to get a array of Rose::DB::Object derived rows. 
 
-	 my $data = Rdb::Jrn::Manager->get_jrn(query => [ nofm => {ge => 0}], sort_by => 'nofm' );
+	 my $data = Rdb::Mytable::Manager->get_mytable(query => [ pk_field => {ge => 0}], sort_by => 'field2' );
 
 =item * 
 
 Pass this object to the RdbDataManager constructor with a Rose::DB::Object::Metatdata derived object
 
  	my $rdbm = Gtk2::Ex::DbLinker::RdbDataManager->new({data => $data,
- 		meta => Rdb::Jrn->meta,
+ 		meta => Rdb::Mytable->meta,
 	});
 
 =back
 
 To link the data with a Gtk window, the Gtk entries id in the glade file have to be set to the names of the database fields
 
-	  $self->{linker} = Linker::Form->new({ 
+	  $self->{linker} = Gtk2::Ex::DbLinker::Form->new({ 
 		    data_manager => $rdbm,
 		    builder =>  $builder,
 		    rec_spinner => $self->{dnav}->get_object('RecordSpinner'),
@@ -341,12 +341,12 @@ To link the data with a Gtk window, the Gtk entries id in the glade file have to
 To add a combo box in the form, the first field given in fields array will be used as the return value of the combo. 
 noed is the Gtk2combo id in the glade file and the field's name in the table that received the combo values.
 	 
-	my $dman = Linker::RdbDataManager->new({data => Rdb::Ed::Manager->get_ed(sort_by => 'nom' ), meta => Rdb::Ed->meta });
+	my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data => Rdb::Combodata::Manager->get_combodata(sort_by => 'name' ), meta => Rdb::Combodata->meta });
 
 	$self->{linker}->add_combo({
     	data_manager => $dman,
-    	id => 'noed',
-	fields => ["id", "nom"],
+    	id => 'comboid',
+	fields => ["id", "name"],
       });
 
 And when all combos or datasheets are added:
@@ -361,7 +361,7 @@ In the subform a module:
 
 	sub on_pk_changed {
 		 my ($self,$value) = @_;
-		my $data =  Rdb::Coll::Manager->get_coll(query => [noti => {eq => $value}]);
+		my $data =  Rdb::Mytable::Manager->get_mytable(query => [pk_field => {eq => $value}]);
 		$self->{subform_a}->get_data_manager->query($data);
 		$self->{subform_a}->update;
 		
@@ -370,7 +370,7 @@ In the subform a module:
 
 This module fetch data from a dabase using Rose::DB::Object derived objects. 
 
-A new instance is created using an array of objects issue by a Rose::DB::Object::Manager child and this instance is passed to a Gtk2::Ex::DbLinker::Form object or by ...Linker::Datasheet objet constructor.
+A new instance is created using an array of objects issue by a Rose::DB::Object::Manager child and this instance is passed to a Gtk2::Ex::DbLinker::Form object or by Gtk2::Ex::DbLinker::Datasheet objet constructor.
 
 =head1 METHODS
 
@@ -379,8 +379,8 @@ A new instance is created using an array of objects issue by a Rose::DB::Object:
 The parameters are passed in a hash reference with the keys C<data> and C<meta>.
 The value for C<data> is a reference to an array of Rose::SB::Object::Manager derived objects. The value for C<meta> is the corresponding metadata object.
 
-		my $data = Rdb::Coll::Manager->get_coll(query => [noti => {eq => $self->{noti}}]);
-		my $dman = Linker::RdbDataManager->new({data=> $data, meta => Rdb::Coll->meta });
+		my $data = Rdb::Mytable::Manager->get_mytable(query => [pk_field => {eq => $value }]);
+		my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data=> $data, meta => Rdb::Mytable->meta });
 
 Array references of primary key names and auto incremented primary keys may also be passed using  C<primary_keys>, C<ai_primary_keys> as hash keys. If not given the RdbDataManager uses the metadata to have these.
 
@@ -388,7 +388,7 @@ Array references of primary key names and auto incremented primary keys may also
 
 To display an other set of rows in a form, call the query method on the datamanager instance for this form with a new array of Rose::DB::Object derived objects.
 
-	my $data =  Rdb::Coll::Manager->get_coll(query => [noti => {eq => $value}]);
+	my $data =  Rdb::Mytable::Manager->get_mytable(query => [pk_field => {eq => $value}]);
 	$self->{form_a}->get_data_manager->query($data);
 	$self->{form_a}->update;
 
@@ -410,7 +410,7 @@ change the current row for the row at position C<$new_pos>.
 Return the position of the current row, first one is 0.
 
 =head2 C<set_field ( $field_id, $value);>
-	
+
 Sets $value in $field_id. undef as a value will set the field to null.
 
 =head2 C<get_field ( $field_id );>
@@ -457,7 +457,9 @@ Copyright (c) 2014 by F. Rappaz.  All rights reserved.  This program is free sof
 =head1 SEE ALSO
 
 L<Gtk2::Ex::DbLinker::Forms>
+
 L<Gtk2::Ex::DbLinker::Datasheet>
+
 L<Rose::DB::Object>
   
 =head1 CREDIT

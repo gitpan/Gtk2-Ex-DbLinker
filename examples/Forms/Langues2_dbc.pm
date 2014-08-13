@@ -37,8 +37,6 @@ sub new {
 
       my $rs = $self->{schema}->resultset('Country')->search_rs(undef, {order_by => 'country'});
 
-      #my $data = Rdb::Country::Manager->get_countries(sort_by => 'country');
-
     my $dman =  Gtk2::Ex::DbLinker::DbcDataManager->new({
 			rs => $rs,
 		
@@ -64,11 +62,10 @@ sub new {
 		   rs =>  $self->{schema}->resultset('Langue')->search_rs(undef, {sort_by => 'langue'}),
 			
 		});
-
+       
 	$self->{linker}->add_combo({
     		data_manager => $combodata,
 	    	id => 'mainlangid',
-		builder => $builder,
       });
   #do not name the toplevel window of the form 'mainwindow', since 
   # it's the name of the top level window in the navigation window

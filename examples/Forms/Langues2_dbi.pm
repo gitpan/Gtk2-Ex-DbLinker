@@ -71,12 +71,10 @@ sub new {
 		      },
 			
 		});
-
+	
 	$self->{linker}->add_combo({
     		data_manager => $combodata,
 	    	id => 'mainlangid',
-		
-		builder => $builder,
       });
   #do not name the toplevel window of the form 'mainwindow', since 
   # it's the name of the top level window in the navigation window
@@ -103,18 +101,19 @@ sub new {
 
 	$builder->get_object("mainwindow")->signal_connect("destroy", \&gtk_main_quit);
 
-	$self->{linker}->update;
+	#$self->{linker}->update;
 
 	 $self->{dnav}->connect_signal_for("add", \&on_add_clicked, $self );
   	 $self->{dnav}->connect_signal_for("del", \&on_delete_clicked, $self );
    	$self->{dnav}->connect_signal_for("apply", \&on_apply_clicked, $self );
 
 	show_tables($self);
-	
+	 $self->{dnav}->set_dataref($self->{linker});	
 	 $self->{dnav}->show_all_except();
 	 $self->{sf}->{dnav}->show_all_except(["mainwindow", "menubar1", "countryid"]);
 
 	 $self->{sf}->{sf_list}->{dnav}->show_all_except(["mainwindow"]);
+         $self->{linker}->update;
 
 	     bless $self, $class;
 

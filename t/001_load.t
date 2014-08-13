@@ -5,7 +5,8 @@
 use strict;
 use warnings;
 use Log::Log4perl  qw(:easy);
-
+use lib "../lib";
+use Gtk2::Ex::DbLinker::DbiDataManager;
 use Test::More tests => 4;
 use DBI;
 
@@ -13,9 +14,9 @@ BEGIN { use_ok( 'DBI' ); }
 BEGIN { use_ok( 'Gtk2::Ex::DbLinker::DbiDataManager' ); }
 Log::Log4perl->easy_init($ERROR);
 
-use Gtk2::Ex::DbLinker::DbiDataManager;
 
-my $dbfile ="./examples/data/ex1";
+
+my $dbfile ="../examples/data/ex1";
 my $dbh = DBI->connect ("dbi:SQLite:dbname=$dbfile","","", {  
 		RaiseError       => 1,
         PrintError       => 1,
