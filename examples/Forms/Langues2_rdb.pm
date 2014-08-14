@@ -63,11 +63,10 @@ sub new {
 			data =>  Rdb::Langue::Manager->get_langues(sort_by => 'langue'),
 			meta => Rdb::Langue->meta,	
 		});
-
+	
 	$self->{linker}->add_combo({
     		data_manager => $combodata,
-	    	id => 'mainlangid',
-		builder => $builder,
+	    	id => 'mainlangid',	
       });
   #do not name the toplevel window of the form 'mainwindow', since 
   # it's the name of the top level window in the navigation window
@@ -95,7 +94,7 @@ sub new {
 	$builder->get_object("mainwindow")->signal_connect("destroy", \&gtk_main_quit);
 
 	$self->{linker}->update;
-
+	 $self->{dnav}->set_dataref($self->{linker});
 	 $self->{dnav}->connect_signal_for("add", \&on_add_clicked, $self );
   	 $self->{dnav}->connect_signal_for("del", \&on_delete_clicked, $self );
    	$self->{dnav}->connect_signal_for("apply", \&on_apply_clicked, $self );

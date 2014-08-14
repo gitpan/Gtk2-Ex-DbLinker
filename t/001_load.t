@@ -16,7 +16,7 @@ Log::Log4perl->easy_init($ERROR);
 
 
 
-my $dbfile ="../examples/data/ex1";
+my $dbfile ="./examples/data/ex1";
 my $dbh = DBI->connect ("dbi:SQLite:dbname=$dbfile","","", {  
 		RaiseError       => 1,
         PrintError       => 1,

@@ -99,7 +99,7 @@ sub new {
    	$self->{dnav}->connect_signal_for("apply", \&on_apply_clicked, $self );
 
 	show_tables($self);
-	
+	$self->{dnav}->set_dataref($self->{linker});	
 	 $self->{dnav}->show_all_except();
 	 $self->{sf}->{dnav}->show_all_except(["mainwindow", "menubar1", "countryid"]);
 

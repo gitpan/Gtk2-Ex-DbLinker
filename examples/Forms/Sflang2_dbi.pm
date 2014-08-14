@@ -100,7 +100,7 @@ sub new {
 						order_by => "country",
 					},
 			});
-
+		$self->{dnav}->set_dataref($self->{sform});
 		my $tree =  Gtk2::TreeView->new();
 
 		$self->{sf_list} = Gtk2::Ex::DbLinker::Datasheet->new({

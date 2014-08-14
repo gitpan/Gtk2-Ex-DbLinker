@@ -7,6 +7,7 @@ our $debug=1;
 use Data::Dumper;
 
 my %refs = map { $_, 1} qw(Gtk2::Ex::Datasheet::DBI Linker::Datasheet Gtk2::Ex::DbLinker::Datasheet);
+my %ref_form = map {$_,1} qw(Gtk2::Ex::DBI Linker::Form Gtk2::Ex::DbLinker::Form);
 
 sub new {
     
@@ -50,10 +51,14 @@ sub new {
 }
 sub set_dataref {
 	my ($self, $dataref) = @_;
+	#the line below defined on what the button will call the delete, undo, add calls
+	#it is the main reason of calling this method and giving it Gtk2::Ex::DbLinker::Form instance
+	#
 	$self->{data}=$dataref;
 	# show_all($self);
 	croak("No instance found for set_dataref ") unless ($dataref);
 	my $ref =  ref $dataref;
+	# if the instance received is a grid, hide a few things:
 	if ( $refs{$ref} ){
 		#my $l = $self->{glade_xml}->get_object('lbl_RecordStatus');
 		#$l->hide();
@@ -68,7 +73,7 @@ sub set_dataref {
 					);
 	} else {	
 			
-			carp ("$ref not found with set_dataref");
+			carp ("$ref not found with set_dataref")  unless ( $ref_form{ $ref });
 
 	}
 }
