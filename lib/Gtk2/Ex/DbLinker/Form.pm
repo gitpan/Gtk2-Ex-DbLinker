@@ -74,9 +74,10 @@ sub new {
 		null_string => $$req{null_string} || "null",
 		builder => $$req{builder},
 		after_insert => $$req{after_insert},
+		on_changed => $$req{on_changed},
 		rec_spinner => $$req{rec_spinner} || "RecordSpinner",
 		status_label => $$req{status_label} || "lbl_RecordStatus",
-		rec_count_label => $$req{rec_count_label} || "lblRecordCount",
+		rec_count_label => $$req{rec_count_label} || "lbl_RecordCount",
 		on_current =>  $$req{on_current},
 		date_formatters => $$req{date_formatters},
 		time_zone => $$req{time_zone},
@@ -191,7 +192,7 @@ sub add_combo{
 
 		$self->{log}->debug("field: " . $field . " type : " . $type);
 	} else {
-		warn ("no Glib type found for $field");
+		warn (__PACKAGE__ . ": no Glib type found for $field");
 		$gtype = "Glib::String";
 	}
 	push @list_def, $gtype;
@@ -670,6 +671,9 @@ sub _changed {
 	 # $self->{log}->debug("self->changed for $fieldname");
 	if (! $self->{painting}){
 	    $self->{changed}=1;
+	     if ( $self->{on_changed} ) {
+                $self->{on_changed}();
+            }
 	    $self->_set_record_status_label;
     	}
 	return FALSE;

@@ -70,6 +70,9 @@ sub new {
 		treeview => $$req{treeview},
 		fields => $$req{fields}, 
 		null_string => $$req{null_string} || "null",
+		on_changed => $$req{on_changed}, # Code that runs when a record is changed ( any column )
+		on_row_select => $$req{on_row_select},
+		multi_select => $$req{multi_select},   
 	};
 	
 	 bless $self, $class;
@@ -326,6 +329,10 @@ sub _setup_treeview {
 	     push @{ $self->{ $treeview_type . "_treestore_def" } }, $v
     }
 
+     # Turn on multi-select mode if requested
+    if ($self->{multi_select}) {
+        $self->{ $treeview_type }->get_selection->set_mode("multiple");
+    }
 
 
 } #setup_treeview
@@ -480,15 +487,105 @@ sub _setup_combo {
 		}
          } # foreach row
 
+ 	if ( $self->{row_select_signal} ) {
+        	$self->{treeview}->get_selection->signal_handler_disconnect( $self->{row_select_signal} );
+    	}
+
 	 $self->{log}->debug("update done");
-	   $self->{changed_signal} = $liststore->signal_connect( "row-changed" => sub { $self->_changed(@_); } );
+
+	   if ( $self->{on_changed} ) {
+	    	$self->{log}->debug("binding on_changed callback");
+	         $self->{changed_signal} = $liststore->signal_connect( "row-changed" => sub { $self->_changed(@_); } );
+           }
+
+	   if ( $self->{on_row_select} ) {
+		        $self->{log}->debug("binding row_select callback");
+        		$self->{row_select_signal} = $self->{treeview}->get_selection->signal_connect( changed  => sub { $self->{on_row_select}(@_); } );
+    		}
+
 
 	$self->{treeview}->set_model($liststore);
 
 	return FALSE;
 } #sub 
 
+sub get_column_value {
+    
+    # This function returns the value in the requested column in the currently selected row
+    # If multi_select is turned on and more than 1 row is selected, it looks in the 1st row
+    
+    my ( $self, $sql_fieldname ) = @_;
+    
+    my @selected_paths = $self->{treeview}->get_selection->get_selected_rows;
+    
+    if ( ! scalar(@selected_paths) ) {
+        return 0;
+    }
+    
+    my $model = $self->{treeview}->get_model;
+    my @selected_values;
+    
+    foreach my $selected_path ( @selected_paths ) {
+        
+        my $column_no = $self->colnumber_from_name( $sql_fieldname );
+        my $value = $model->get( $model->get_iter( $selected_path ), $column_no );
+=for comment
+        # Strip out dollars and commas for numeric columns
+        # We *don't* look for a number column with currency turned on,
+        # because sometimes you don't want to display currency formatting,
+        # and in this case, we still want to strip out currency formatting
+        # if people have entered it into a cell
+        
+        if ( exists $self->{fields}[$column_no]->{number} && $self->{fields}[$column_no]->{number} ) {
+            $value =~ s/[\$\,\%]//g;
+            if ( exists $self->{fields}[$column_no]->{number}->{percentage} && $self->{fields}[$column_no]->{number}->{percentage} ) {
+            	$value *= 100;
+            }
+        }
+=cut
+        push @selected_values, $value;
+        
+    }
+    
+    # Previous behaviour was to only return the 1st selected value
+    # To preserve backwards compatibility, we return a scalar if multi_select is off,
+    # and we return an array if multi_select is turned on
+    if ( $self->{multi_select} ) {
+        return @selected_values;
+    } else {
+        return $selected_values[0];
+    }
+    
+}
 
+sub set_column_value {
+    
+    # This function sets the value in the requested column in the currently selected row
+    
+    my ( $self, $sql_fieldname, $value ) = @_;
+    
+    if ( $self->{mult_select} ) {
+        $self->{log}->debug("set_column_value called with multi_select enabled -> setting value in 1st selected row");
+    }
+    
+    my @selected_paths = $self->{treeview}->get_selection->get_selected_rows;
+    
+    if ( ! scalar( @selected_paths ) ) {
+        return 0;
+    }
+    
+    my $model = $self->{treeview}->get_model;
+    my $iter = $model->get_iter( $selected_paths[0] );
+    
+    $model->set(
+        $iter,
+        $self->colnumber_from_name( $sql_fieldname ),
+        $value
+    );
+    
+    return TRUE;
+    
+}
 
 sub colnumber_from_name {
     
@@ -498,7 +595,8 @@ sub colnumber_from_name {
 }
 
 sub undo {
-	shift->query;
+	#shift->query;
+	shift->update;
 }
 
 #called by on-change event for each row of the treeview
@@ -518,6 +616,16 @@ sub _changed {
         $model->set( $iter, STATUS_COLUMN, CHANGED );
         $model->signal_handler_unblock( $self->{changed_signal} );
     }
+
+    if ( $self->{on_changed} ) {
+     $self->{on_changed}(
+            {
+                treepath      => $treepath,
+                iter          => $iter
+            }
+        );
+     }
+
     $self->{changed}= TRUE; 
 
   

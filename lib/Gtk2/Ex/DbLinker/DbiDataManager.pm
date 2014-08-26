@@ -31,7 +31,8 @@ sub new {
     		primary_keys            => $$req{primary_keys},                         # An array ref of auto incremented primary keys
 		ai_primary_keys		=> $$req{ai_primary_keys}, 			# an array of auto incremented primary keys
 		sql                     => $$req{sql},                                  # A hash of SQL related stuff
-		aperture	=> $$req{aperture} || 1
+		aperture	=> $$req{aperture} || 1,
+		before_query => $$req{before_query},
 	};
 
 	 bless $self, $class;
@@ -614,7 +615,13 @@ sub query {
          if ( $where_object->{bind_values} ) {
                 $self->{sql}->{bind_values} = $where_object->{bind_values};
          }
-            
+
+             # Execute any before_query code
+    if ( $self->{before_query} ) {
+        if ( ! $self->{before_query}( $where_object ) ) {
+            return FALSE;
+        }
+    } 
 
 	 #if ( exists $self->{sql}->{pass_through} ) {
         if ( ! exists $self->{sql}->{from} && exists $self->{sql}->{pass_through} ) {
@@ -893,7 +900,8 @@ sub _fetch_new_slice {
                 icon    => "error",
                 text    => "<b>Database server says:</b>\n\n" . $@
             );
-            return FALSE;
+	     croak( __PACKAGE__ . "::query died with the SQL:\n\n$local_sql\n" );
+	    #return FALSE;
         }
         
         return TRUE;
@@ -1131,6 +1139,10 @@ C<order_by> : a string of the order by clause.
 =item *
 
 C<bind_values> : a array ref of the values corresponding to the place holders in the C<where> clause.
+
+=item *
+
+C<before_query> : a code ref to be run at the start of the query method.
 
 =back
 

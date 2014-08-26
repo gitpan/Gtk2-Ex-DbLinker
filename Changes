@@ -13,4 +13,11 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 	new parameters columns => {name =>type} which replace the call to $rs->result_source->columns to supplied the column's names and types
 	+columns => {name => type} the columns supplied are added to those found with  $rs->result_source->columns. 
 	if a primary_keys array ref is supplied the search of the row at a given pos is done with $rs->search, not $rs->find
+0.07 Test failed - updated
+0.08 
+	Datasheet: 	
+		get/set_column_value, 
+		call back function with on_row_select + on_changed ; 
+	DbiDataManager:
+		before_query
 

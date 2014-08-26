@@ -4,7 +4,8 @@ use strict;
 use warnings;
 
 
-our $VERSION     = '0.07';
+our $VERSION     = '0.08';
+$VERSION = eval $VERSION;
 
 1;
 
@@ -17,7 +18,7 @@ Gtk2::Ex::DbLinker - Use sql or orm objects to build a gtk2 Gui
 
 =head1 VERSION
 
-version  0.07 but see version at the end of MYMETA.yml to check that I'm correct here...
+version  0.07_01 but see version at the end of MYMETA.yml to check that I'm correct here...
 
 =head1 INSTALLATION
 
