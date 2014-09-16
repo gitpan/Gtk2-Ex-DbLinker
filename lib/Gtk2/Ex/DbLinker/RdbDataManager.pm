@@ -435,7 +435,7 @@ Return an array of primary key(s) (auto incremented or not).
 
 =head2 C<get_autoinc_primarykeys()>;
 	
-Return an array of primary key(s).
+Return an array of autoincremented primary key(s) defined by the the 'serial' column's type or undef.
 
 =head1 SUPPORT
 

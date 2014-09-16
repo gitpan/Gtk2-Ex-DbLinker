@@ -253,12 +253,12 @@ sub get_field_type {
 
 sub get_autoinc_primarykeys {
 	my $self = shift;
-	return @{$self->{ai_primary_keys}};
+	return @{$self->{ai_primary_keys}} if ($self->{ai_primary_keys});
 }
 
 sub get_primarykeys {
 	my $self = shift;
-	return @{$self->{primary_keys}};
+	return @{$self->{primary_keys}} if ($self->{primary_keys});
 }
 
 sub _init_pos {
@@ -549,7 +549,7 @@ Return an array of primary key(s) (auto incremented or not).
 
 =head2 C<get_autoinc_primarykeys()>;
 
-Return an array of auto incremented primary key(s).
+Return an array of auto incremented primary key(s) from the underlying result_source or undef.
 
 =head1 SUPPORT
 

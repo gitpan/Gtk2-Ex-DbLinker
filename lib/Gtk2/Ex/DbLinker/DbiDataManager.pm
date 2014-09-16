@@ -37,10 +37,17 @@ sub new {
 
 	 bless $self, $class;
 
-	 $self->{log} = Log::Log4perl->get_logger("Gtk2::Ex::DbLinker::DbiDataManager");
+	 $self->{log} = Log::Log4perl->get_logger(__PACKAGE__);
+
+
+	$self->{auto_incrementing} = ( defined ($self->{ai_primary_keys}) ? 1 : 0);
+	croak(__PACKAGE__ . ": use ai_primary_keys or primary_keys but not both...") if (defined $self->{ai_primary_keys} && defined $self->{primary_keys});
+	$self->{primary_keys} = $self->{ai_primary_keys} if (defined $self->{ai_primary_keys});
+
+	$self->{log}->debug("auto_incrementing: " . 	$self->{auto_incrementing});
 
 	if ( ! $self->{dbh} ) {
-        croak( __PACKAGE__ . " constructor missing a dbh!\n" );
+        croak( __PACKAGE__ . ": constructor missing a dbh!\n" );
     }
        
     #$self->{cols} = {}; 
@@ -97,14 +104,14 @@ sub new {
             		if ( $fieldname =~ m/ as /i ) {
 		                my ( $sql_fieldname, $alias ) = split( / as /i, $fieldname );
                 		$self->{widgets}->{$alias} = { sql_fieldname    => $sql_fieldname };
-				 $alias = lc( $alias);
+				# $alias = lc( $alias);
 				 push @{$self->{cols}}, $alias unless ($alias ~~ @{$self->{cols}});
 		 # $self->{cols}->{ lc $alias } ++;
             		} else {
 		                if ( ! exists $self->{widgets}->{$fieldname} ) {
                 		    $self->{widgets}->{$fieldname} = {};
 				    $self->{log}->debug("DBI_dman : fieldname " . $fieldname);
-				    $fieldname = lc ( $fieldname );
+				    # $fieldname = lc ( $fieldname );
 				     push @{$self->{cols}}, $fieldname  unless ($fieldname ~~ @{$self->{cols}});
 		    #$self->{cols}->{ lc $fieldname } ++;
                 		}
@@ -142,12 +149,12 @@ sub new {
 	        return FALSE;
         	}
 
-        	foreach my $fieldname ( @{$sth->{'NAME_lc'}} ) {
+        	foreach my $fieldname ( @{$sth->{'NAME'}} ) {
 	            if ( ! $self->{widgets}->{$fieldname} ) {
 			    # print "$fieldname\n";
                 	$self->{widgets}->{$fieldname} = {};
 			$self->{log}->debug("DBI_dman : fieldname " . $fieldname);
-			$fieldname = lc ( $fieldname );
+			#$fieldname = lc ( $fieldname );
 			 push @{$self->{cols}}, $fieldname unless ($fieldname ~~ @{$self->{cols}});
 		#  $self->{cols}->{ lc $fieldname } ++;
             		}
@@ -183,7 +190,7 @@ sub new {
                     if ( ! $row->{KEY_SEQ} ) {
                         $self->{log}->debug("This primary key is NOT auto-incrementing");
 			$self->{auto_incrementing} = 0;
-                    } #if
+                    }
                 } #if
             } #while
         }#if
@@ -196,9 +203,8 @@ sub new {
 		 push @{$self->{cols}}, $pk unless ($pk ~~ @{$self->{cols}});
 		#  $self->{cols}->{ lc $pk } ++;
     }
-    die unless($self->{primary_keys});
+    croak("Cannot deal with a table without a primary key") unless($self->{primary_keys});
     
-       # Fetch column_info for current table
 
   if ( exists $self->{sql}->{pass_through} ){	
 	 eval {
@@ -213,7 +219,7 @@ sub new {
 	
     }
 
-	die unless($sth);
+	croak(__PACKAGE__ . ": no primary keys detected. Please provide an array ref using ai_primary_keys or primary_keys in the constructor") unless($sth);
 	$sth->finish;
         
 
@@ -232,29 +238,48 @@ sub new {
 sub use_dbh_column_info {
 	my ($self ) = @_;
 	my $sth;
+	my @sth;
  eval {
+=for comment
+the absence of pass_through was tested above, so we never reach these lines
         if ( $self->{sql}->{pass_through} ) {
+		# % return one field from the table and not all or not the pk
             $sth = $self->{dbh}->column_info( undef, $self->{schema}, $self->{sql}->{pass_through}, '%' ) || croak $self->{dbh}->errstr;
+	    push @sth, $sth;
         } else {
+=cut
 		my ($table) = ( $self->{sql}->{from}=~/^(\w+)/);
 		$self->{log}->debug("table: " . $table);
             # $sth = $self->{dbh}->column_info( undef, $self->{schema}, $self->{sql}->{from}, '%' ) 
-	    $sth = $self->{dbh}->column_info( undef, $self->{schema}, $table, '%' ) || croak $self->{dbh}->errstr;
-            }
+	    #$sth = $self->{dbh}->column_info( undef, $self->{schema}, $table, '%' ) || croak $self->{dbh}->errstr;
+	    #}
+
+	    for my $pk (@{$self->{primary_keys}}) {
+		  $sth = $self->{dbh}->column_info( undef, $self->{schema}, $table, $pk ) || croak $self->{dbh}->errstr;
+		  push @sth, $sth;
+	    
+	    }
+	 #} #else
     	};
-    
-   	die unless (defined $sth); 
-           while ( my $column_info_row = $sth->fetchrow_hashref ) {
-            # Loop through the list of columns from the database, and
-            # add only columns that we're actually dealing with
-            for my $fieldname ( keys %{$self->{sql_to_widget_map}} ) {
-                if ( $column_info_row->{COLUMN_NAME} eq ( $fieldname ) ) {
-                    # Note that we want to store this against the fieldname and NOT the sql_fieldname
+    	for $sth (@sth) {
+	   	croak("Column_info not supported by the drivers - a primary_keys array ref is required in the constructor") unless (defined $sth); 
+           	while ( my $column_info_row = $sth->fetchrow_hashref ) {
+		 	my	 $fieldname = $column_info_row->{COLUMN_NAME};
+           
+	    #for my $fieldname ( keys %{$self->{sql_to_widget_map}} ) {
+	    #        if ( $column_info_row->{COLUMN_NAME} eq ( $fieldname ) ) {
+                   
+		    if (! $self->{auto_incrementing} && $column_info_row->{mysql_is_auto_increment}){
+			     $self->{auto_incrementing} = 1;
+			     push @{$self->{ai_primary_keys}}, $fieldname;
+		    
+		    }
                     $self->{column_info}->{ $self->{sql_to_widget_map}->{$fieldname} } = $column_info_row;
-                    last;
-                }
-            }
-    	}
+		    #last;
+		    #}
+	     #} #for
+    	} #while
+	} #for
     
     # Make sure we've got the primary key in the widgets hash and the sql_to_widget_map hash
     # It will NOT be here unless it's been specified in the SQL select string or the widgets hash already
@@ -285,13 +310,13 @@ sub use_dbh_column_info {
 sub use_sth_info {
 	my ($self, $sth ) = @_;
 
-	 $self->{cols} = $sth->{'NAME_lc'};
+	 $self->{cols} = $sth->{'NAME'};
 	#for my $name (@{ $sth->{'NAME_lc'}}){
 	#	$self->{cols}->{ $name };
 	#}
 	my @type = @{$sth->{'TYPE'}};
 	$self->{log}->debug("TYPE: ", join(" ", @type));
-	my $pos=0;
+	my $pos=0; #http://docstore.mik.ua/orelly/linux/dbi/ch06_01.htm
 	my %sqltype = (1=>'char', 2=>'integer', 3=>'integer', 4=>'integer', 5=>'integer', 6=>'integer', 7=>'integer', 
 		8=>'integer', 9=>'date', 10=>'date', 11=>'date', 12=>'varchar', -1=>'varchar', -2=>'boolean', -3=>'boolean', 
 		-5=>'integer', -6=>'integer', -7=>'integer');
@@ -355,11 +380,14 @@ sub new_row{
     
     my $self = shift;
     my $newposition = $self->count; # No need to add one, as the array starts at zero.
-    
+=for comment
     if ( ! $self->_move( 0, $newposition ) ) {
         warn "Insert failed ... probably because the current record couldn't be applied\n";
         return FALSE;
     }
+=cut
+
+	$self->_move( 0, $newposition);
     
     # Assemble new record and put it in place
     $self->{records}[$self->{slice_position}] = $self->_assemble_new_record;
@@ -374,12 +402,20 @@ sub new_row{
 
 sub save{
 
-	my $self = shift;
+	my ($self,  $href) = @_;
     
     my @fieldlist = ();
     my @bind_values = ();
     
-    my $placeholders;  # We need to append to the placeholders while we're looping through fields, so we know how many fields we actually have
+    if ($href) {
+    	for my $k (keys %$href) {
+		$self->{log}->debug("push on bind_values " .  $href->{$k} . " from field " . $k);
+	 	push @bind_values, $href->{$k};
+		push @fieldlist, $k;
+	}
+    
+    }
+    # my $placeholders; never used! # We need to append to the placeholders while we're looping through fields, so we know how many fields we actually have
     
     foreach my $fieldname ( keys %{$self->{widgets}} ) {
         
@@ -390,17 +426,16 @@ sub save{
         my $sql_fieldname = $self->{widgets}->{$fieldname}->{sql_fieldname} || $fieldname;
         
         # Don't include the field if it's a primary key.
-        # This goes for inserts and updates. We only support auto_increment primary
-        # keys anyway, so people shouldn't be updating them ...
-        
-	 if ($sql_fieldname && $self->{primary_keys} && $sql_fieldname eq $self->{primary_keys} ) {
+        # This goes for inserts and updates.
+	
+        my @pk = $self->get_primarykeys;
+	#if ($sql_fieldname && $self->{primary_keys} && $sql_fieldname eq $self->{primary_keys} ) {
+	if ( $sql_fieldname ~~ @pk) {
+		$self->{log}->debug("jumping $sql_fieldname because it's a pk");
             next;
         }
         
-        # TODO Remove dodged-up multi-widget support
-	# my $widget = $self->get_widget( $fieldname ) || $self->get_widget( $fieldname . "_" . "hh" );
-        
-        # TODO Document read-only labels
+
 	#if ( defined $widget && ref $widget ne "Gtk2::Label" ) { # Labels are read-only
             push @fieldlist, $sql_fieldname;
 	    #push @bind_values, $self->get_widget_value( $fieldname );
@@ -426,6 +461,7 @@ sub save{
             . join( "=? and ", @{$self->{primary_keys}} ) . "=?";
         
         foreach my $primary_key ( @{$self->{primary_keys}} ) {
+ 	$self->{log}->debug("push on bind_values " . $primary_key . " : " . $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key}});
             push @bind_values, $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key} };
         }
         
@@ -477,14 +513,13 @@ sub save{
     # If this was an INSERT, we need to fetch the primary key value and apply it to the local slice,
     # and also append the primary key to the keyset
     
-    if ( $self->{inserting} ) {
+    if ($self->{auto_incrementing} && $self->{inserting} ) {
         
 	     # We only support a *single* primary key in the case of
             # an auto-incrementing setup.
 	    #
                my $new_key = $self->_last_insert_id;
             my $primary_key = $self->{primary_keys}[0];
-		if ($self->{debug}){ print "new_key: $new_key primary_key: $primary_key\n"; }
             $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key} } = $new_key;
             
         
@@ -506,7 +541,7 @@ sub save{
 
     
     
-    $self->{inserting} = 0; # Reset this flag ( doesn't matter if we were inserting or not )
+    $self->{inserting} = 0;
     
     return TRUE;
 
@@ -516,15 +551,17 @@ sub delete{
 
   
     my $self = shift;
-    $self->{log}->debug("delete pk_name is " . join( " ", @{$self->{primary_keys}}));
+    my @pks = $self->get_primarykeys;
 
-      my $delete_sql = "delete from " . $self->{sql}->{from} . " where " . join( "=? and ", @{$self->{primary_keys}} ) . "=?";
+    $self->{log}->debug("delete pk_name is " . join( " ", @pks));
+
+      my $delete_sql = "delete from " . $self->{sql}->{from} . " where " . join( "=? and ", @pks ) . "=?";
 	$self->{log}->debug("delete : " . $delete_sql) ; 
 	
        my @bind_values = ();
 
  
-        foreach my $primary_key ( @{$self->{primary_keys}} ) {
+        foreach my $primary_key ( @pks ) {
             push @bind_values, $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key} };
         }
 
@@ -595,13 +632,23 @@ sub get_field_names{
 
 sub get_autoinc_primarykeys{
 	my $self = shift;
-	my $arref = ( $self->{ai_primary_keys} ? $self->{ai_primary_keys} : $self->{primary_keys} );
-	return  @{$arref};
-
+	if ($self->{auto_incrementing}) {
+		my $arref = ( $self->{ai_primary_keys} ? $self->{ai_primary_keys} : $self->{primary_keys} );
+		return  @{$arref};
+	} else {
+		#http://stackoverflow.com/questions/1006904/why-does-my-array-undef-have-an-element
+		return ();
+	}
+	
 }
 
 sub get_primarykeys{
-	return  @{shift->{primary_keys}};
+	my $self = shift;
+	if ($self->{auto_incrementing}){
+		return @{$self->{ai_primary_keys}};
+	} else {
+		return  @{$self->{primary_keys}};
+	}
 
 }
 
@@ -623,7 +670,7 @@ sub query {
         }
     } 
 
-	 #if ( exists $self->{sql}->{pass_through} ) {
+
         if ( ! exists $self->{sql}->{from} && exists $self->{sql}->{pass_through} ) {
         eval {
             $self->{records} = $self->{dbh}->selectall_arrayref (
@@ -648,14 +695,15 @@ sub query {
         # Get an array of primary keys
         my $sth;
         
-        my $local_sql;
-	$self->{log}->debug("pks: " . join( ", ", @{$self->{primary_keys}} ));
+	my $local_sql;
+	my @pks = $self->get_primarykeys();
+	$self->{log}->debug("pks: " . join( ", ", @pks ));
 		$self->{log}->debug("select: " .$self->{sql}->{select} );
-		#if (  @{$self->{primary_keys}} = 0){
-		$local_sql = $self->{sql}->{head} . join( ", ", @{$self->{primary_keys}} ) . " from " . $self->{sql}->{from};
-		#} else {
+		#if (  @{$self->{primary_keys}} = 0)
+		$local_sql = $self->{sql}->{head} . join( ", ", @pks ) . " from " . $self->{sql}->{from};
+		# else 
 		#$local_sql =  $self->{sql}->{head} . $self->{sql}->{select} . " from " .  $self->{sql}->{from};
-		#}
+		#
 	    # die $local_sql,"\n";
         # Add where clause if defined
 
@@ -710,13 +758,13 @@ sub query {
 
         $self->{keyset} = ();
         $self->{records} = ();
-	 $self->{log}->debug("query primary keys : " . join(" ",  @{$self->{primary_keys}})  );
 
         while ( my @row = $sth->fetchrow_array ) {
             my $key_no = 0;
             my @keys;
-            foreach my $primary_key ( @{$self->{primary_keys}} ) {
+            foreach my $primary_key ( @pks ) {
 		    # $self->{log}->debug("query : " . $primary_key . " value : " . $row[$key_no] );
+		 croak (__PACKAGE__ . ": no value found for primary key $primary_key... check the primary_key names") unless($row[$key_no]);
                 push @keys, $row[$key_no];
                 $key_no ++;
             }
@@ -730,7 +778,7 @@ sub query {
         
         $sth->finish;
         
-    }
+    } #else
    $self->_move( 0, 0 );
     return TRUE; 
 
@@ -758,6 +806,7 @@ sub _move {
         }
     }
     # if (  ! exists $self->{sql}->{pass_through})
+    # $self->{log}->debug("new pos: $new_position");
     if ( exists $self->{sql}->{from} ) {
         
         # Check if we need to roll to another slice of our recordset
@@ -791,8 +840,7 @@ sub _move {
         $self->{slice_position} = $new_position;
         
     }
-
-
+    #$self->{log}->debug("slice_pos: " . $new_position);
 }
 
 sub _fetch_new_slice {
@@ -844,10 +892,7 @@ sub _fetch_new_slice {
         }
         
         my $key_list;
-        
-        # TODO Add support for non-auto_increment / text primary keys?
-        # I've never wanted this myself, but it shouldn't be *too* hard to implement?
-        # Anyway, this currently fails if we have a text primary key ...
+        my @pks =  $self->get_primarykeys;
         
         # Assemble query
         my $local_sql = $self->{sql}->{head} . $self->{sql}->{select};
@@ -859,10 +904,8 @@ sub _fetch_new_slice {
 	    # $local_sql .= ", " . join( ', ', @{$self->{primary_keys}} );
 	}
 	# $self->{log}->debug($local_sql);
-	$local_sql .= " from " . $self->{sql}->{from}. " where ( " . join( ', ', @{$self->{primary_keys}} ) . " ) in ( ";
+	$local_sql .= " from " . $self->{sql}->{from}. " where ( " . join( ', ', @pks ) . " ) in ( ";
 	#
-	# $local_sql .= " from " . $self->{sql}->{from}. " where " . join( ', ', @{$self->{primary_keys}} ) . "  in ( ";
-        
         # The where clause we're trying to build should look like:
         #
         # where ( key_1, key_2, key_3 ) in
@@ -886,7 +929,7 @@ sub _fetch_new_slice {
 	if ( $self->{sql}->{order_by} ) {
             $local_sql .= " order by " . $self->{sql}->{order_by};
         }
-	# $self->{log}->debug("_fetch_new_slice " . $local_sql);
+	#$self->{log}->debug("_fetch_new_slice " . $local_sql);
 
         eval {
             $self->{records} = $self->{dbh}->selectall_arrayref (
@@ -1113,7 +1156,9 @@ This module fetches data from a dabase using DBI and sql commands. A new instanc
 =head2 constructor
 
 The parameters to C<new> are passed in a hash reference with the keys C<dbh>, C<sql>, C<primary_keys>, C<ai_primary_keys>.
-The value for C<primary_keys> and C<ai_primary_keys> are arrayrefs holding the field names of the primary key and auto incremented primary keys. The DataManager module does its best to find those if they are not set.  C<dbh>, C<sql> are mandatory.
+The value for C<primary_keys> and C<ai_primary_keys> are arrayrefs holding the field names of the primary key and auto incremented primary keys. 
+If the table use a autogenerated key, use ai_primary_keys instead of primary_keys to set these.
+C<dbh>, C<sql> are mandatory.
 The value for C<sql> is a hash reference with the following keys : C<select> or C<select_distinct>, C<from>, C<where>, C<order_by>, C<bind_values>.
 
 The value are
@@ -1180,12 +1225,16 @@ C<bind_values> : a array reference holding the value(s) corresponding to the pla
 
 =back
 
-The methods belows are used by the Form module and you should not have to use them directly.
+=head2 C<save();> 
 
+Build the sql commands tu insert a new record or update an existing record. Fetch the value from auto_incremented primary key.
+
+
+=head2 C<save({ $field_name => $value });>
+
+Pass a href to save when a value has to be saved in the database without using C< $dman->set_field($ field, $value ) >. Use this when you want to change a field that is part of a multiple fields primary key.
 
 =head2 C<new_row();>
-
-=head2 C<save();>
 
 =head2 C<delete();>
 

@@ -20,4 +20,10 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 		call back function with on_row_select + on_changed ; 
 	DbiDataManager:
 		before_query
+0.09
+	DbiDataManager:
+		auto_incrementing use from the start, in the module, $self->get_primarykeys must be called instead of @{$self->{primary_keys}}
+		$self->{cols} holds field's names without their changing to lower case
+	Form:
+		set_data_manager method to replace the current data manager
 

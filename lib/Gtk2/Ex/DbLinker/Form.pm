@@ -127,10 +127,15 @@ sub _init {
 
 	$self->_bind_on_changed;
 	$self->_set_recordspinner;
+	croak __PACKAGE__ . ": a data manager is required" unless (defined $self->{dman});
 	$self->{dman}->set_row_pos(0);
 }
 
 
+sub set_data_manager {
+	my ($self, $dman) = @_;
+	$self->{dman} = $dman;
+}
 
 #dman must contains all the rows 
 sub add_combo{
@@ -611,14 +616,14 @@ sub _set_entry {
 
 sub _set_textentry {
 	my ($self, $w, $x) = @_;
- 	$self->{log}->debug("set_textentry text entry undef") if (undef $x);
+ 	$self->{log}->debug("set_textentry text entry undef") if (! defined $x);
 	$w->get_buffer->set_text($x || "");
 
 }
 
 sub _set_combo {
 	my ($self, $w, $x) = @_;
-	$self->{log}->debug("set_combo value " . ($x ? $x : " undef") . " widget: ". ref $w );
+	$self->{log}->debug("set_combo value " . ( defined $x ? $x : " undef") . " widget: ". ref $w );
 	my $m = $w->get_model;
 	my $iter = $m->get_iter_first;
 	 
@@ -792,7 +797,6 @@ sub get_data_manager{
 
 __END__
 
-
 =head1 NAME
 
 Gtk2::Ex::DbLinker::Form - a module that display data from a database in glade generated Gtk2 interface
@@ -940,7 +944,7 @@ You may use the same method to delete a row from the linking table
 
 =head1 DESCRIPTION
 
-his module automates the process of tying data from a database to widgets on a Glade-generated form.
+This module automates the process of tying data from a database to widgets on a Glade-generated form.
 All that is required is that you name your widgets the same as the fields in your data source.
 
 Steps for use:
@@ -1049,6 +1053,10 @@ Reflect in the user interface the changes made after the data manager has been q
 
 Returns the data manager to be queried
 
+=head2 C<set_data_manager( $dman ); >
+
+Replaces the current data manager with the one receives. The columns should not changed, but this method can be use to change the join clause. 
+
 =head2 C<get_widget_value ( $widget_id );>
 
 Returns the value of a data widget from its id
@@ -1114,14 +1122,13 @@ L<http://code.google.com/p/gtk2-ex-dblinker/>.
 
 =head1 AUTHOR
 
- FranE<ccedil>ois Rappaz <rappazf@gmail.com>
+FranE<ccedil>ois Rappaz <rappazf@gmail.com>
 
 =head1 COPYRIGHT
 
 Copyright (c) 2014 by F. Rappaz.  All rights reserved.
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
-
 
 =head1 SEE ALSO
 
