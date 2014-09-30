@@ -27,4 +27,4 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 	Form:
 		set_data_manager method to replace the current data manager
 0.091 Datasheet.pm binrary in my disc and missing in the zip in 0.09 
-
+0.092 DbiDataManager save({pk_name 0 => pk_value}) to update one of the field composing a multi field primarykey.

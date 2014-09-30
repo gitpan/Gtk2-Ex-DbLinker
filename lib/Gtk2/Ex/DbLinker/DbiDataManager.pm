@@ -28,7 +28,7 @@ sub new {
 
 		my $self = {
     		dbh                     => $$req{dbh},                                  # A database handle
-    		primary_keys            => $$req{primary_keys},                         # An array ref of auto incremented primary keys
+    		primary_keys            => $$req{primary_keys},                         # An array ref of primary keys
 		ai_primary_keys		=> $$req{ai_primary_keys}, 			# an array of auto incremented primary keys
 		sql                     => $$req{sql},                                  # A hash of SQL related stuff
 		aperture	=> $$req{aperture} || 1,
@@ -406,15 +406,25 @@ sub save{
     
     my @fieldlist = ();
     my @bind_values = ();
-    
+    #$href is used to change a field's value when the field is included in a composed primary keys. 
+    #The array @pk holds the field's name of the primary keys since ->get_primarykeys return these fields even if auto_incrementing is 0
+    #The if test in the foreach loop fails and the values of the primary key fields are not added in the bind_values array therefore.
+    #The old values are then used to select the row when the field has to be changed.
+    #
+    #When $href is undef, save is used to insert or changed a non primary keys field, the primary key value comes from the database. 
+    #@pk holds the auto incremented primary key names (auto_incrementing is) or is undef.
+    #
+     my @pk;   
     if ($href) {
     	for my $k (keys %$href) {
 		$self->{log}->debug("push on bind_values " .  $href->{$k} . " from field " . $k);
 	 	push @bind_values, $href->{$k};
 		push @fieldlist, $k;
 	}
-    
-    }
+    	@pk = $self->get_primarykeys;
+    } else {
+     	@pk  = $self->get_autoinc_primarykeys;
+     }
     # my $placeholders; never used! # We need to append to the placeholders while we're looping through fields, so we know how many fields we actually have
     
     foreach my $fieldname ( keys %{$self->{widgets}} ) {
@@ -428,8 +438,6 @@ sub save{
         # Don't include the field if it's a primary key.
         # This goes for inserts and updates.
 	
-        my @pk = $self->get_primarykeys;
-	#if ($sql_fieldname && $self->{primary_keys} && $sql_fieldname eq $self->{primary_keys} ) {
 	if ( $sql_fieldname ~~ @pk) {
 		$self->{log}->debug("jumping $sql_fieldname because it's a pk");
             next;
