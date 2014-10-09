@@ -430,7 +430,7 @@ sub _setup_combo {
 	my $liststore = Gtk2::ListStore->new( @{ $self->{ $treeview_type . "_treestore_def"} } );
 	# foreach my $row (@{$self->{data}}){ 
 	for (my $i = 0; $i < $last; $i++) {
-		$self->{log}->debug("Datasheet query set row pos " . $i);
+		# $self->{log}->debug("Datasheet query set row pos " . $i);
 		$self->{dman}->set_row_pos($i);
  		 my @combo_values;        
 	       	my @model_row;
@@ -446,12 +446,12 @@ sub _setup_combo {
                 	} else {
 				my $x = "";
 				if ( $field->{name} ~~ @{$self->{cols}}) {
-					$self->{log}->debug("query: " .  $field->{name} . " row: " . $i );
+					# $self->{log}->debug("query: " .  $field->{name} . " row: " . $i );
 					
 					$x = $self->{dman}->get_field( $field->{name} );
-					$self->{log}->debug( $field->{name} . " " . (defined $x ? "x: " . $x : "x undefined"));
+					# $self->{log}->debug( $field->{name} . " " . (defined $x ? "x: " . $x : "x undefined"));
 					if (defined $x) {
-						$self->{log}->debug( $field->{name} . " " . ( $x ne "" ? "x: " . $x : "x zls")); 
+						# $self->{log}->debug( $field->{name} . " " . ( $x ne "" ? "x: " . $x : "x zls")); 
 						$x = ($x eq $self->{null_string} ? "" : $x);
 					}
 				
@@ -462,7 +462,7 @@ sub _setup_combo {
 				} else { $self->{log}->debug("update: " . $field->{name} . " not found in " . join(" ", @{$self->{cols}}));}
 
 			 	
-				$self->{log}->debug("field: ". $field->{name} . " col.: " . $column . " value: " . (defined $x?$x:" undef "));
+				# $self->{log}->debug("field: ". $field->{name} . " col.: " . $column . " value: " . (defined $x?$x:" undef "));
 
 				push @model_row,  $column, $x;
 				#die unless defined($x);
@@ -493,10 +493,10 @@ sub _setup_combo {
 
 	 $self->{log}->debug("update done");
 
-	   if ( $self->{on_changed} ) {
+	 #  if ( $self->{on_changed} ) {
 	    	$self->{log}->debug("binding on_changed callback");
 	         $self->{changed_signal} = $liststore->signal_connect( "row-changed" => sub { $self->_changed(@_); } );
-           }
+	 # }
 
 	   if ( $self->{on_row_select} ) {
 		        $self->{log}->debug("binding row_select callback");
@@ -657,7 +657,7 @@ sub apply {
         
         my $status = $model->get( $iter, STATUS_COLUMN );
 
-	 $self->{log}->debug("status : " . $status . " row pos " . $row_pos);
+	# $self->{log}->debug("status : " . $status . " row pos " . $row_pos);
         
 	 $self->{dman}->set_row_pos( $row_pos++ );
 

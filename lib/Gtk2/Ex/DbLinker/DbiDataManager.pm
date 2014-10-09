@@ -13,11 +13,13 @@ use  Carp;
 
 use Glib qw/TRUE FALSE/;
 
+=for comment
 use Gtk2::Ex::Dialogs (
                         destroy_with_parent => TRUE,
                         modal               => TRUE,
                         no_separator        => FALSE
 );
+=cut
 
 my %fieldtype = (tinyint => "integer", "int" => "integer");
 
@@ -29,12 +31,12 @@ sub new {
 		my $self = {
     		dbh                     => $$req{dbh},                                  # A database handle
     		primary_keys            => $$req{primary_keys},                         # An array ref of primary keys
-		ai_primary_keys		=> $$req{ai_primary_keys}, 			# an array of auto incremented primary keys
 		sql                     => $$req{sql},                                  # A hash of SQL related stuff
 		aperture	=> $$req{aperture} || 1,
 		before_query => $$req{before_query},
 	};
-
+	 $self->{ai_primary_keys} = $$req{ai_primary_keys} if (exists ($$req{ai_primary_keys})); 	# an array of auto incremented primary keys 
+		 											# and I want to test if it has been set to unedf
 	 bless $self, $class;
 
 	 $self->{log} = Log::Log4perl->get_logger(__PACKAGE__);
@@ -89,7 +91,7 @@ sub new {
             $sth->execute or die $self->{dbh}->errstr;
         };
         if ( $@ ) {
-            carp( "Failed to set search_path to " . $self->{search_path}
+            carp(__PACKAGE__ . " Failed to set search_path to " . $self->{search_path}
                 . " for a Postgres database. I'm not sure what the implications of this are. Postgres users, please report ...\n" );
         }
 }
@@ -136,7 +138,8 @@ sub new {
         	};
         
         	if ( $@ ) {
-            		Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error in Query!", icon    => "error", text    => "<b>Database Server Says:</b>\n\n$@");
+			#Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error in Query!", icon    => "error", text    => "<b>Database Server Says:</b>\n\n$@");
+			carp(__PACKAGE__ . " Error in query : " . $@);
 	            return FALSE;
         	}
         
@@ -145,7 +148,8 @@ sub new {
         	};
         
 	        if ( $@ ) {
-	     		Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error in Query!", icon    => "error", text    => "<b>Database Server Says:</b>\n\n$@");
+			#Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error in Query!", icon    => "error", text    => "<b>Database Server Says:</b>\n\n$@");
+			carp(__PACKAGE__ . " Error in query: " . $@);
 	        return FALSE;
         	}
 
@@ -219,7 +223,7 @@ sub new {
 	
     }
 
-	croak(__PACKAGE__ . ": no primary keys detected. Please provide an array ref using ai_primary_keys or primary_keys in the constructor") unless($sth);
+	croak(__PACKAGE__ . " : no primary keys detected. Please check the table names and provide an array ref using ai_primary_keys or primary_keys in the constructor") unless($sth);
 	$sth->finish;
         
 
@@ -262,14 +266,17 @@ the absence of pass_through was tested above, so we never reach these lines
 	 #} #else
     	};
     	for $sth (@sth) {
-	   	croak("Column_info not supported by the drivers - a primary_keys array ref is required in the constructor") unless (defined $sth); 
+	   	croak(__PACKAGE__ . " Column_info not supported by the drivers - a primary_keys array ref is required in the constructor") unless (defined $sth); 
            	while ( my $column_info_row = $sth->fetchrow_hashref ) {
 		 	my	 $fieldname = $column_info_row->{COLUMN_NAME};
            
-	    #for my $fieldname ( keys %{$self->{sql_to_widget_map}} ) {
-	    #        if ( $column_info_row->{COLUMN_NAME} eq ( $fieldname ) ) {
-                   
-		    if (! $self->{auto_incrementing} && $column_info_row->{mysql_is_auto_increment}){
+	   
+	    #do this only if ai_primary_keys has not been set to undef  
+	    # ( exists  $$self{ai_primary_keys} &&
+	       
+		    if ( ! exists  $$self{ai_primary_keys} && ! $self->{auto_incrementing} && $column_info_row->{mysql_is_auto_increment}){
+			    # die;
+			     $self->{log}->debug("exists ai-pk is : " . (exists $$self{ai_primary_keys} ? " true" : "false"));
 			     $self->{auto_incrementing} = 1;
 			     push @{$self->{ai_primary_keys}}, $fieldname;
 		    
@@ -426,7 +433,8 @@ sub save{
      	@pk  = $self->get_autoinc_primarykeys;
      }
     # my $placeholders; never used! # We need to append to the placeholders while we're looping through fields, so we know how many fields we actually have
-    
+    $self->{log}->debug("pk: " . join(" ", @pk));
+ $self->{log}->debug("primary_keys: " . join(" ", @{$self->{primary_keys}}));
     foreach my $fieldname ( keys %{$self->{widgets}} ) {
         
         $self->{log}->debug("Processing field ". $fieldname);
@@ -465,11 +473,11 @@ sub save{
         
     } else {
          $self->{log}->debug("updating ");
-        $update_sql = "update " . $self->{sql}->{from} . " set " . join( "=?, ", @fieldlist ) . "=? where "
-            . join( "=? and ", @{$self->{primary_keys}} ) . "=?";
-        
-        foreach my $primary_key ( @{$self->{primary_keys}} ) {
- 	$self->{log}->debug("push on bind_values " . $primary_key . " : " . $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key}});
+	 # $update_sql = "update " . $self->{sql}->{from} . " set " . join( "=?, ", @fieldlist ) . "=? where " . join( "=? and ", @{$self->{primary_keys}} ) . "=?";
+        $update_sql = "update " . $self->{sql}->{from} . " set " . join( "=?, ", @fieldlist ) . "=? where " . join( "=? and ", @pk ) . "=?";
+	#foreach my $primary_key ( @{$self->{primary_keys}} ) {
+	foreach my $primary_key ( @pk ) {
+ 		$self->{log}->debug("push on bind_values " . $primary_key . " : " . $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key}});
             push @bind_values, $self->{records}[$self->{slice_position}]->{ $self->{sql_to_widget_map}->{$primary_key} };
         }
         
@@ -494,12 +502,8 @@ sub save{
     };
     
     if ( $@ ) {
-        Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-            title   => "Error preparing statement to update recordset!",
-            icon    => "error",
-            text    => "<b>Database server says:</b>\n\n$@"
-        );
-        carp( "Error preparing statement to update recordset:\n\n$update_sql\n\n@bind_values\n" . $@ );
+	    # Gtk2::Ex::Dialogs::ErrorMsg->new_and_run( title   => "Error preparing statement to update recordset!", icon    => "error",  text    => "<b>Database server says:</b>\n\n$@");
+        carp(__PACKAGE__ . " Error preparing statement to update recordset:\n\n$update_sql\n\n@bind_values\n" . $@ );
     }
     
     # Evaluate the results of the update.
@@ -510,12 +514,8 @@ sub save{
     $sth->finish;
     
     if ( $@ ) {
-        Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-            title   => "Error updating recordset!",
-            icon    => "error",
-            text    => "<b>Database server says:</b>\n\n" . $@
-        );
-        carp( "Error updating recordset:\n\n$update_sql\n\n@bind_values\n" . $@ . "\n" );
+	    #   Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error updating recordset!", icon    => "error",     text    => "<b>Database server says:</b>\n\n" . $@      );
+        carp(__PACKAGE__ . " Error updating recordset:\n\n$update_sql\n\n@bind_values\n" . $@ . "\n" );
     }
     
     # If this was an INSERT, we need to fetch the primary key value and apply it to the local slice,
@@ -586,11 +586,8 @@ sub delete{
     };
     
     if ( $@ ) {
-        Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-            title   => "Error Deleting Record!",
-            icon    => "error",
-            text    => "<b>Database Server Says:</b>\n\n$@"
-        );
+	    # Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error Deleting Record!", icon    => "error",  text    => "<b>Database Server Says:</b>\n\n$@" );
+	    carp(__PACKAGE__ . " Error Deleting Record : " . $@);
         $sth->finish;
         return FALSE;
     }
@@ -687,11 +684,8 @@ sub query {
         };
         
         if ( $@ ) {
-            Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-                    title   => "Error in Query!",
-                    icon    => "error",
-                    text    => "<b>Database Server Says:</b>\n\n$@"
-            );
+		# Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(title   => "Error in Query!", icon    => "error",           text    => "<b>Database Server Says:</b>\n\n$@"            );
+		carp(__PACKAGE__ . " Error in query : " . $@);
             return FALSE;
         }
         
@@ -730,12 +724,8 @@ sub query {
         };
         
         if ( $@ ) {
-            Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-                title   => "Error in Query!",
-                icon    => "error",
-                text    => "<b>Database Server Says:</b>\n\n$@"
-            );
-             croak( "query died with the SQL:\n\n$local_sql\n" );
+		# Gtk2::Ex::Dialogs::ErrorMsg->new_and_run( title   => "Error in Query!", icon    => "error",text    => "<b>Database Server Says:</b>\n\n$@");
+             carp( __PACKAGE__ . " query died with the SQL:\n\n$local_sql\nError from server: " . $@  );
             
             return FALSE;
         }
@@ -750,14 +740,10 @@ sub query {
 	# $self->{log}->debug("DBI_dman_query sql: $local_sql");
  
         if ( $@ ) {
-            Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-                title   => "Error in Query!",
-                icon    => "error",
-                text    => "<b>Database Server Says:</b>\n\n" . $@  . " ".  $local_sql 
-            );
+		#Gtk2::Ex::Dialogs::ErrorMsg->new_and_run( title   => "Error in Query!", icon    => "error", text    => "<b>Database Server Says:</b>\n\n" . $@  . " ".  $local_sql );
 	    #$self->{local_sql} = $sth->Statement;            
 	    $sth->finish;
-                croak( __PACKAGE__ . "::query died with the SQL:\n\n$local_sql\n" );
+                carp( __PACKAGE__ . "::query died with the SQL:\n$local_sql Error from server: $@\n" );
             
                 return FALSE;
             }
@@ -772,7 +758,7 @@ sub query {
             my @keys;
             foreach my $primary_key ( @pks ) {
 		    # $self->{log}->debug("query : " . $primary_key . " value : " . $row[$key_no] );
-		 croak (__PACKAGE__ . ": no value found for primary key $primary_key... check the primary_key names") unless($row[$key_no]);
+		 croak (__PACKAGE__ . ": no value found for primary key $primary_key... check the sql command") unless($row[$key_no]);
                 push @keys, $row[$key_no];
                 $key_no ++;
             }
@@ -946,13 +932,9 @@ sub _fetch_new_slice {
         };
 	# $self->{log}->debug("records: " .  join(" ", @{$self->{records}}));
         if ( $@ ) {
-            Gtk2::Ex::Dialogs::ErrorMsg->new_and_run(
-                title   => "Error fetching record slice!",
-                icon    => "error",
-                text    => "<b>Database server says:</b>\n\n" . $@
-            );
-	     croak( __PACKAGE__ . "::query died with the SQL:\n\n$local_sql\n" );
-	    #return FALSE;
+		# Gtk2::Ex::Dialogs::ErrorMsg->new_and_run( title   => "Error fetching record slice!",icon    => "error", text    => "<b>Database server says:</b>\n\n" . $@ );
+	     carp( __PACKAGE__ . "  Query died with the SQL:\n\n$local_sql\n" );
+	    return FALSE;
         }
         
         return TRUE;

@@ -754,11 +754,11 @@ sub _format_date{
 	my ($pos1, $pos2 ) = ( $in_db ? (1, 0) : (0, 1));
 	my $format =  $self->{date_formatters}->{$id}->[$pos1];
 	my $f = $self->_get_dateformatter($format);
-	my $dt = $f->parse_datetime($v) or croak($f->errstr);
+	my $dt = $f->parse_datetime($v) or croak($f->errmsg);
 	$self->{log}->debug("format_date:  date time object ymd: " . $dt->ymd);
 	$format = $self->{date_formatters}->{$id}->[$pos2];
 	$f = $self->_get_dateformatter($format);
-	my $r = $f->format_datetime($dt)  or croak($f->errstr);
+	my $r = $f->format_datetime($dt)  or croak($f->errmsg);
 	$self->{log}->debug("format_date formatted date: ". $r);
 
 	return $r;	
