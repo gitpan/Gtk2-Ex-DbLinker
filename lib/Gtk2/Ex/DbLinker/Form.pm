@@ -25,7 +25,8 @@ enum => "Glib::String",
 my %signals = (
 	'GtkCalendar' => 'day_selected',
 	'GtkToggleButton' => 'toggled',
-	'GtkTextView' => 'changed',
+	'GtkTextView' => \&_get_textbuffer,
+	'Gtk2::TextBuffer' => 'changed',
 	'GtkComboBoxEntry' => 'changed',
 	'GtkComboBox' => 'changed',
 	'GtkCheckButton' => 'toggled',
@@ -55,7 +56,7 @@ my %getter = (
 	'GtkComboBoxEntry' =>  \&_get_combobox_firstvalue,
 	'GtkCheckButton' => sub { return shift->get_active;},
 	'GtkSpinButton' => sub { return shift->get_active;},
-	'GtkTextView' => sub {return shift->get_child->get_text; },
+	'GtkTextView' => sub{my $textview = shift; my $buffer = $textview->get_buffer; 	return $buffer->get_text($buffer->get_bounds, FALSE);},
 
 );
 
@@ -197,7 +198,7 @@ sub add_combo{
 
 		$self->{log}->debug("field: " . $field . " type : " . $type);
 	} else {
-		warn (__PACKAGE__ . ": no Glib type found for $field");
+		$self->{log}->debug("no Glib type found for field $field assuming Glib::String");
 		$gtype = "Glib::String";
 	}
 	push @list_def, $gtype;
@@ -544,9 +545,15 @@ sub _bind_on_changed {
 		 my $name = $w->get_name;
  		$self->{datawidgets}->{$id} = $w;
 		$self->{datawidgetsName}->{$id}= $name;
+		if ( ref( $signals{$name}) eq "CODE"){
+			my $coderef = $signals{$name};
+			$w = &$coderef($self, $w);
+			$name = ref $w;
+
+		}
 		$self->{log}->debug("bind  $name $id with self->changed \n");
 		$w->signal_connect_after( $signals{$name} => sub{ $self->_changed( $id )});
-	} else {$self->{log}->debug(" ... not found ");}
+	} else { $self->{log}->debug(" ... not found ");}
    }
  
 }
@@ -656,7 +663,7 @@ sub _set_check {
 
 sub _get_combobox_firstvalue  {
 	my ($c) = @_; 
-	print "getter_cb\n"; 
+	#print "getter_cb\n"; 
 	my $iter = $c->get_active_iter; 
 	return ($iter ? $c->get_model->get( $iter,0) : undef ); 
 }
@@ -670,6 +677,12 @@ sub _set_spinbutton {
 
 }
 
+sub _get_textbuffer {
+	my ($self, $w) = @_;
+	return $w->get_buffer;
+
+	
+}
 
 sub _changed {
 	 my ( $self, $fieldname ) = @_;

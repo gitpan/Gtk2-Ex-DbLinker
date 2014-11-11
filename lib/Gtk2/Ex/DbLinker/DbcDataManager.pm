@@ -57,13 +57,15 @@ sub query{
 	$self->_init_pos;
 	$self->_init if ( @{$self->{cols}} == 0);
 	# $self->{log}->debug("query : " . @$data[0]->noti ) if (scalar @$data > 0);
+=for comment
 	foreach my $pkr (@{$self->{data}}){
 		# print Dumper($pkr);
 		foreach my $pkn (@{$self->{primary_keys}}){
 			my $i = 0;
-			#$self->{log}->debug( "pk name: " . $pkn . " pk value : " . $$pkr[$i++] );
+			$self->{log}->debug( "pk name: " . $pkn . " pk value : " . $$pkr[$i++] );
 		}
 	}
+=cut
 
 
 } 
@@ -73,7 +75,7 @@ sub set_row_pos{
 	my $found=1;
 	# $self->{log}->debug("new_row is " . ($self->{new_row} ? " defined" : " undefined"));
 	if ( ! defined ($self->{row}->{pos})){ 
-		$self->{log}->debug("not data");
+		$self->{log}->debug("no data");
 		$found = 0;
 	} elsif ($pos < $self->{row}->{last_row} + 1 && $pos >=0) {
 		$self->{row}->{pos}= $pos;
@@ -90,8 +92,11 @@ sub set_row_pos{
 			for my $key (@{$self->{primary_keys}}){
 				$h{"me." . $key} = $vals[$i++];	
 			}
-			#print Dumper(%h);
-			$r = $self->{rs}->search(\%h)->single();	
+			$self->{log}->debug( join(" ", keys %h));
+			$self->{log}->debug( join(" ", values %h));
+			my $rs =  $self->{rs}->search(\%h); 
+			$r = $rs->single();
+			$self->{log}->debug("count (should be 1) : ", $rs->count);	
 		
 		}
 		croak ("Can't set current row for value(s) " . join(" " , @{ $self->{data}[$pos] }) . " at pos " . $pos ) unless (defined $r);

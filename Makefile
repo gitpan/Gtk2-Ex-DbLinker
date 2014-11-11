@@ -63,11 +63,11 @@ DIRFILESEP = \\
 DFSEP = $(DIRFILESEP)
 NAME = Gtk2::Ex::DbLinker
 NAME_SYM = Gtk2_Ex_DbLinker
-VERSION = 0.093
+VERSION = 0.094
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_093
+VERSION_SYM = 0_094
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.093
+XS_VERSION = 0.094
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib\arch
@@ -280,7 +280,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Gtk2-Ex-DbLinker
-DISTVNAME = Gtk2-Ex-DbLinker-0.093
+DISTVNAME = Gtk2-Ex-DbLinker-0.094
 
 
 # --- MakeMaker macro section:
@@ -528,7 +528,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) "  Gtk2::Ex::Dialogs: 0.11" >> META_new.yml
 	$(NOECHO) $(ECHO) "  Log::Log4perl: 1.41" >> META_new.yml
 	$(NOECHO) $(ECHO) "  Test::More: 1" >> META_new.yml
-	$(NOECHO) $(ECHO) "version: 0.093" >> META_new.yml
+	$(NOECHO) $(ECHO) "version: 0.094" >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) {{ > META_new.json
@@ -577,7 +577,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) "      }}" >> META_new.json
 	$(NOECHO) $(ECHO) "   }}," >> META_new.json
 	$(NOECHO) $(ECHO) "   \"release_status\" : \"stable\"," >> META_new.json
-	$(NOECHO) $(ECHO) "   \"version\" : \"0.093\"" >> META_new.json
+	$(NOECHO) $(ECHO) "   \"version\" : \"0.094\"" >> META_new.json
 	$(NOECHO) $(ECHO) }} >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
@@ -873,7 +873,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) "<SOFTPKG NAME=\"$(DISTNAME)\" VERSION=\"0.093\">" > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) "<SOFTPKG NAME=\"$(DISTNAME)\" VERSION=\"0.094\">" > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    <ABSTRACT>Use sql or orm objects to build a gtk2 Gui</ABSTRACT>" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    <AUTHOR>FranE&lt;ccedil&gt;ois Rappaz (rappazf@gmail.com)</AUTHOR>" >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) "    <IMPLEMENTATION>" >> $(DISTNAME).ppd
