@@ -9,7 +9,7 @@ use Class::Interface;
 use strict;
 use warnings;
 use  Carp;
-#use Data::Dumper;
+use Data::Dumper;
 
 $Class::Interface::CONFESS = 1;
 
@@ -21,6 +21,8 @@ sub new {
 		rec_per_page => $$req{rec_per_page} || 1,
 		data => $$req{data},
 		meta => $$req{meta},
+		columns => $$req{columns},
+		'+columns' => $$req{'+columns'},
 		primary_keys => $$req{primary_keys},
 	 	ai_primary_keys => $$req{ai_primary_keys},
 
@@ -28,11 +30,12 @@ sub new {
 	 $self->{log} = Log::Log4perl->get_logger("Gtk2::Ex::DbLinker::RdbDataManager");
 
 	
-
+	$self->{rocols} = [];
 	 bless $self, $class;
 	 $self->_init_pos;
 	$self->_init;
-	 return $self;
+	 return 
+	 $self;
 }
 
 sub query{
@@ -44,6 +47,7 @@ sub query{
 	# print Dumper($self->{cols});
 	$self->_init_pos;
 	$self->_init if ( @{$self->{cols}} == 0);
+	$self->set_row_pos($self->{row}->{pos});
 	# $self->{log}->debug("query : " . @$data[0]->noti ) if (scalar @$data > 0);
 	foreach my $r (@{$self->{data}}){
 		foreach my $f (@{$self->{cols}}){
@@ -85,23 +89,47 @@ sub set_field{
 	my ($self, $id, $value) = @_;
 	my $pos =  $self->{row}->{pos};
 	my $row;
-	$self->{log}->debug("set_field: " . $id . " pos: " . $pos . " value : " . ($value ? $value : ""));
-	if ($pos >= $self->row_count) {
-		$row = $self->{new_row};
+	my $rel = $self->{fieldsRel}->{$id};
+	$rel = ($rel ? $rel : "");
+	my $key = $rel . $id;
+	if ($key ~~ @{$self->{rocols}}){
+		$self->{log}->debug("set_field: " . $id . " key: " . $key . " pos: " . $pos . " skipped since this is a readonly field.");
 	} else {
-		$row = $self->{data}[$pos];
-	}
-	my $m = $self->{fieldSetter}->{$id};
-	$row->$m($value); # or warn(__PACKAGE__ . " no method found to set value " . $value . " in the column " . $id . " entries are ".  join(" ", keys %{ $self->{fieldSetter} }));
+		$self->{log}->debug("set_field: " . $id . " key: " . $key . " pos: " . $pos . " value : " . ($value ? $value : ""));
+		if ($pos >= $self->row_count) {
+			$row = $self->{new_row};
+		} else {
+			$row = $self->{data}[$pos];
+		}
+		my $rel = $self->{fieldsRel}->{$key};
+		my $m = $self->{fieldSetter}->{$key};
+		if ($rel) {
+			$row->{$rel}->$m($value);	
+		} else {
+			$row->$m($value);
+		}
+	}	
 }
 
 sub get_field{
 	my ($self, $id) = @_;
 	my $pos =  $self->{row}->{pos};
 	my $row = $self->{data}[$pos];
-	my $m = $self->{fieldGetter}->{$id};
-	# $self->{log}->debug("get_field " . $id . " " . $m);
-	return $row->$m() or die(__PACKAGE__ . " no method found to get value from the column " . $id);;
+	
+	my $rel = $self->{fieldsRel}->{$id};
+	$rel = ( $rel ? $rel : "");
+	my $key = $rel . $id;
+	my $m = $self->{fieldGetter}->{$key};
+	
+	my $v;
+	if (length ($rel) ){
+		$self->{log}->debug("get_field " . $id . " rel: " . $rel . " method: " . $m);
+		$v = $row->{$rel}->$m(); # or croak(__PACKAGE__ . "1 no method found to get value from the column " . $rel . " + " . $id);
+	} else {
+		$self->{log}->debug("get_field " . $id . " method: " . $m);
+		$v = $row->$m(); # or croak(__PACKAGE__ . " no method found to get value from the column " . $id);
+	}
+	return $v;
 
 }
 
@@ -193,8 +221,10 @@ sub get_field_names {
 #param : the field name
 sub get_field_type {
 	my ($self, $id) = @_;
-	#return $fieldtype{$self->{fieldsDBType}->{$id}};
-	return $self->{fieldsDBType}->{$id};
+	my $rel = $self->{fieldsRel}->{$id};
+	$rel = ( $rel ? $rel : "");
+	my $key = $rel . $id;	
+	return $self->{fieldsDBType}->{$key};
 
 }
 
@@ -211,6 +241,49 @@ sub get_autoinc_primarykeys {
 	my @pk;
       	@pk =	@{$self->{ai_primary_keys}} if ($self->{ai_primary_keys});
 	return @pk;
+}
+
+sub _init_fields_access {
+	my ($self, $meta, $fldref, $relname) = @_;
+	my $aref = ($fldref ? $fldref : $meta->column_names);
+	$relname = ( $relname ?  $relname : "");
+	$self->{log}->debug("init_fields_access: fields are " . join(" ", @$aref));
+	foreach my $id ( @$aref ){
+		my $c =	$meta->column($id);
+		croak ("Field $id not found in $meta->class metadata") unless ($c);
+		my $method =  $c->method_name('get')  || $c->method_name('get_set') or croak("no get/get_set method found for $id");
+		$self->{fieldGetter}->{$relname . $id} = $method;
+		$self->{log}->debug("get method for field ". $relname . " " . $id . " : " . $method);
+		$method =  $c->method_name('set')  || $c->method_name('get_set') or croak("no set/get_set method found for $id");
+		$self->{fieldSetter}->{$relname . $id} = $method;
+		$self->{fieldsDBType}->{$relname . $id}= $c->type;
+		if ( length( $relname) ) {
+			$self->{fieldsRel}->{$id}= $relname;
+		}
+      }
+
+	
+
+}
+
+sub _init_joined_fields {
+	my ($self, $href) = @_;
+	my %h = %{$href};
+	for my $relname ( keys %h){
+		my $aref = $h{$relname};
+		my @a = map { $relname . $_ } @$aref;
+		push @{$self->{cols}}, @$aref; #widget's name are given without a table's or relationship's name in the glade file
+		$self->{log}->debug("init_joined_fields: fields are " . join(" ", @$aref));
+		push @{$self->{rocols}}, @a;
+		$self->{log}->debug("init_joined_fields: ro_fields are " . join(" ", @a));
+		my $class = $self->{meta}->relationship($relname)->{class};
+		$self->{log}->debug("class: ", $class);
+		my $meta = Rose::DB::Object::Metadata->for_class($class);
+		$self->_init_fields_access($meta, $aref, $relname);
+
+			
+	}
+
 }
 
 sub _init_pos {
@@ -232,17 +305,10 @@ sub _init {
 	$self->{log}->debug("Class: ". $self->{class});
 	$self->{primary_keys} = [];
 	$self->{cols} = [];
-
-	foreach my $id ($meta->column_names){
-		my $c =	$meta->column($id);
-
-		my $method =  $c->method_name('get')  || $c->method_name('get_set') or die();
-		$self->{fieldGetter}->{$id} = $method;
-		$self->{log}->debug("get method for field ". $id . " : " . $method);
-		$method =  $c->method_name('set')  || $c->method_name('get_set') or die();
-		$self->{fieldSetter}->{$id} = $method;
+ 	foreach my $id ($meta->column_names){
 		my (@pk, @apk);
-		push @{$self->{cols}}, $id;
+		#push @{$self->{cols}}, $id;
+		my $c = $meta->column($id);
 		if ($c->is_primary_key_member) {
 			$self->{log}->debug("found pk " . $id);
 		       push @pk, $id;
@@ -253,18 +319,27 @@ sub _init {
 		}
 		# don't override user defined values
 		$self->{primary_keys} = \@pk unless ($self->{primary_keys});
-=for comment
-		if ( $self->{ai_primary_keys}) {
-			$self->{log}->debug("ai_primary_keys already given");
-		} else  {
-			$self->{log}->debug("stores newly found ai_pk");
-			$self->{ai_primary_keys} = \@apk;
-		}
-=cut
 		$self->{ai_primary_keys} = \@apk unless ($self->{ai_primary_keys});
-		
 		$self->{log}->debug("Rdb_dman_init: field " . $id . " type: " . $c->type);
-		$self->{fieldsDBType}->{$id}= $c->type;
+	}
+	
+	if (defined $self->{'+columns'}){ #use meta object from main table and from relationship (foreign key not treated with) for the moment
+
+		#$self->_get_fields_access($meta, $aref);
+
+		$self->_init_joined_fields($self->{'+columns'});
+	
+	}
+
+	if ( ! defined $self->{columns}) { #use meta object from main table
+
+		push @{$self->{cols}}, $meta->column_names;
+		$self->_init_fields_access($meta, undef, undef);
+	   
+
+        } else { #use meta object from the relationship objects, not from the main table 
+		#the pk field has been defined above from the meta data from the main table
+		$self->_init_joined_fields($self->{columns});
 	}
 }
 
@@ -383,6 +458,11 @@ The value for C<data> is a reference to an array of Rose::SB::Object::Manager de
 		my $dman = Gtk2::Ex::DbLinker::RdbDataManager->new({data=> $data, meta => Rdb::Mytable->meta });
 
 Array references of primary key names and auto incremented primary keys may also be passed using  C<primary_keys>, C<ai_primary_keys> as hash keys. If not given the RdbDataManager uses the metadata to have these.
+
+You may pass a C<columns> or  C<'+columns'> as a hash ref where the keys are the names of the relationship and the values are an array ref holding the fields names accessed by this relationship.
+Use C<+columns> if you are using fields from the main table and from joined table(s). Use C<columns> if you are interested only in fields from tables bounded by join clauses.
+Use neither of them if you want to access fields from the main table only, the relationship being used to restrict the rows.
+The fields selected with C<'+columns'> or with C<'columns'> are readonly: a call to set_field($field_id, $field_value) will not change any value.
 
 =head2 C<query( $data );>
 

@@ -9,7 +9,7 @@ use Class::Interface;
 use strict;
 use warnings;
 use  Carp;
-#use Data::Dumper;
+use Data::Dumper;
 
 $Class::Interface::CONFESS = 1;
 
@@ -40,7 +40,8 @@ sub new {
 	 $self->{log} = Log::Log4perl->get_logger(__PACKAGE__);
 
 	 bless $self, $class;
-	$self->{cols} = [];	
+	$self->{cols} = [];
+	$self->{rocols} = [];	
 	$self->_init;
 	 $self->_init_pos;
 
@@ -54,8 +55,10 @@ sub query{
 	#try to initiate cols as long as it's not done (the array referer by $self->{cols} is empty)
 	#the line defined cols the first time a row is fetched
 	# print Dumper($self->{cols});
+	#$self->{log}->debug(Dumper $rs);
 	$self->_init_pos;
 	$self->_init if ( @{$self->{cols}} == 0);
+	$self->set_row_pos($self->{row}->{pos});
 	# $self->{log}->debug("query : " . @$data[0]->noti ) if (scalar @$data > 0);
 =for comment
 	foreach my $pkr (@{$self->{data}}){
@@ -123,15 +126,19 @@ sub set_field{
 	my ($self, $id, $value) = @_;
 	my $pos =  $self->{row}->{pos};
 	my $row;
-	$self->{log}->debug("set_field: " . $id . " pos: " . $pos . " value : " . ($value ? $value : ""));
-	if ($pos >= $self->row_count) {
-		$row = $self->{new_row};
+	if ($id ~~ @{$self->{rocols}}){
+		$self->{log}->debug("set_field: " . $id . " pos: " . $pos . " skipped since this is a readonly field.");
 	} else {
+		$self->{log}->debug("set_field: " . $id . " pos: " . $pos . " value : " . ($value ? $value : ""));
+		if ($pos >= $self->row_count) {
+			$row = $self->{new_row};
+		} else {
 		
-		$row = $self->{current_row};
-	}
+			$row = $self->{current_row};
+		}
 
-	$row->set_column($id, $value) ; #or die(__PACKAGE__ . " no method found to set value " . $value . " in the column " . $id . " entries are ".  join(" ", keys %{ $self->{fieldSetter} }));
+		$row->set_column($id, $value) ; #or die(__PACKAGE__ . " no method found to set value " . $value . " in the column " . $id . " entries are ".  join(" ", keys %{ $self->{fieldSetter} }));
+	}
 }
 
 sub get_field{
@@ -170,6 +177,7 @@ sub save{
 		my $pos = $self->{row}->{pos};
 		#$row =  $self->{rs}->find(@{$self->{data}[$pos]});
 		$row = $self->{current_row};
+		# $self->{log}->debug(Dumper($row));
 		$result = $row->update;
 	}
 	$self->{log}->debug("saving and unsetting new row");
@@ -341,6 +349,7 @@ sub _init {
 			my %h = %{$self->{'+cols_types'}};
 			for my $col ( keys %h){
 				push @cols, $col;
+				push @{$self->{rocols}}, $col;
 				$self->{fieldsDBType}->{$col} =  $h{$col};
 			}
 		}
@@ -348,6 +357,7 @@ sub _init {
 		my %h = %{$self->{cols_types}};
 		for my $col ( keys %h){
 			push @cols, $col;
+			push @{$self->{rocols}}, $col;
 			$self->{fieldsDBType}->{$col} =  $h{$col};
 		}
 		#$self->{cols} = \@cols;
@@ -501,7 +511,8 @@ You will build a datamanager from the User and Order tables with
 
 The fields are taken from a call to C<$resultset->result_source> and when you join two tables this is not always the fields you are intersted in.
 You may pass a C<columns> as a hash ref where the keys are the names of the fields and the values are the type (varchar, char, integer,boolean, date, serial, text, smallint, mediumint, timestamp, enum).
-Likewise, C<'+columns'> with a similar hash ref will add the fields (from the join table) to those that are derived from  C<$resultset->result_source>.
+Likewise, C<'+columns'> with a similar hash ref will add the fields (from the join table) to those that are derived from  C<$resultset->result_source>. Use this if you are using fields from the result_source object and fields from join clause. Use C<columns> if you are interested only in fields from a join clause.
+The fields selected with C<'+columns'> or with C<'columns'> are readonly: a call to set_field($field_id, $field_value) will not change any value.
 
 =head2 C<query( $rs );>
 

@@ -30,3 +30,11 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 0.092 DbiDataManager save({pk_name 0 => pk_value}) to update one of the field composing a multi field primarykey.
 0.093 Corrected bugs in Form (dateformater), remove use of Gtk2::Ex::Dialogs in DbiDM, more changes in update in table with 2 primary keys
 0.094 corrected bugs with textview in Form.pm
+0.094 DbcDataManager
+	Fields added with columns or +columns are readonly.
+	$self->set_row_pos($self->{row}->{pos}) in query
+      RbDataManager
+	$self->set_row_pos($self->{row}->{pos}) in query
+0.095 RdbDataManager
+	Fields added with columns or +columns to read data from joined tables
+	These fields are readonly.

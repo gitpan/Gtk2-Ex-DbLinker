@@ -302,7 +302,8 @@ sub _display_data {
 			$x = $dman->get_field($id);
 					if (ref $x) {
 						# my @set = $row->$id(); 
-						my @set = $dman->get_field($id);
+						#my @set = $dman->get_field($id);
+						my @set = @$x;
 						$x = join(',', @set);
 							$self->{log}->debug( "id: " . $id . " gtkname : " . $name . " ref value: " . ($x?ref($x):"") .  " value: " . ($x?$x:"") . " type : ". $self->{dman}->get_field_type($id) );
 
@@ -740,7 +741,7 @@ sub get_widget_value {
 		my $coderef = $getter{ $self->{datawidgetsName}->{$wid} };
 		$x  = &$coderef( $w ); 
 	}
-
+	$self->{log}->debug("found: " . ($x ? $x : " undef"));
 	return ($x ? $x: "");
 }
 
