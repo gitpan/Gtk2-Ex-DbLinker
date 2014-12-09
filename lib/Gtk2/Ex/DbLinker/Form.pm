@@ -300,7 +300,10 @@ sub _display_data {
 		} else {
 			#$x = $row->$id() if ($row);
 			$x = $dman->get_field($id);
-					if (ref $x) {
+			my $ref = ref $x;
+			$self->{log}->debug("ref: " . $ref) if ($ref);
+					if ($ref && $ref eq "ARRAY") {
+					
 						# my @set = $row->$id(); 
 						#my @set = $dman->get_field($id);
 						my @set = @$x;
