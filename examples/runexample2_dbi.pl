@@ -4,7 +4,7 @@ use warnings;
 use Gtk2 -init;
 # use Dbc::Schema;
 
-#use lib "../lib/";
+# use lib "../lib/";
 use DBI;
 
 use Log::Log4perl;

@@ -94,6 +94,8 @@ sub new {
 		          		],
 				});
 
+		 $self->{sform}->add_childform($self->{sf_list});
+
 		#set up the datasheet
 		#
 		$self->{sf_list}->{dnav} = Forms::Dnav2->new(0);

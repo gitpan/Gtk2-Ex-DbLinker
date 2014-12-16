@@ -38,3 +38,8 @@ Revision history for Perl module Gtk2::Ex::DbLinker
 0.095 RdbDataManager
 	Fields added with columns or +columns to read data from joined tables
 	These fields are readonly.
+0.096 Bug corrected in Form
+0.097 Form 
+	auto_apply can be defined (defaults to true)
+	add_childform to cascade auto_apply down to child form or datasheet
+	has_changed return true if children forms or datasheets have been changed in the form but not applied to the database

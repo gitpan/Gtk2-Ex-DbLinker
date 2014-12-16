@@ -3,8 +3,8 @@ use strict;
 use warnings;
 use Gtk2 -init;
 use Dbc::Schema;
-
 #use lib "../lib/";
+
 
 use Log::Log4perl;
   Log::Log4perl->init("log_ex2.conf"); 

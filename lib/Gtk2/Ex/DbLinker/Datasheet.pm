@@ -766,6 +766,12 @@ sub delete {
 
 }
 
+sub has_changed{
+	my $self = shift;
+	#there is no child datasheet or child form in a datasheet (or ?)
+	return ($self->{changed} ? 1 : 0);
+}
+
 sub _cell_edited {
 	 my ($self, $cell, $path_string, $new_text) = @_;
 	  my $path = Gtk2::TreePath->new_from_string ($path_string);

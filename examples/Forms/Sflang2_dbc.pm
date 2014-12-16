@@ -97,6 +97,8 @@ sub new {
 		 $self->{sf_list}->{dnav}->add_ctrl($scroll);
 		 $self->{sf_list}->{dnav}->set_dataref($self->{sf_list});
 
+		 $self->{sform}->add_childform($self->{sf_list});
+
 	 	my $ctrl_from = $self->{sf_list}->{dnav}->get_object('vbox1_main');
 		my $ctrl_to = $self->{builder}->get_object('alignment1');
 	        Gtk2::Widget::reparent($ctrl_from, $ctrl_to);

@@ -3,8 +3,6 @@ package Forms::Langues2_dbc;
 use strict;
 use warnings;
 
-#use lib "../Gtk2-Ex-DbLinker/lib/";
-
 use Gtk2::Ex::DbLinker::Form;
 use Gtk2::Ex::DbLinker::Datasheet;
 
@@ -76,6 +74,9 @@ sub new {
     $self->{dnav}->reparent($ctr, $w);
 
 	$self->{sf} = Forms::Sflang2_dbc->new({gladefolder => $self->{gladefolder}, schema => $self->{schema} , countryid => $self->{countryid}});
+
+
+	$self->{linker}->add_childform($self->{sf}->{sform});
 
 	#mainwindow is the top level window of the subform navigation tool 
 	my $subform = $self->{sf}->{dnav}->get_object('mainwindow');

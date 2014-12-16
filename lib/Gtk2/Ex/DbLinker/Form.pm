@@ -83,14 +83,15 @@ sub new {
 		date_formatters => $$req{date_formatters},
 		time_zone => $$req{time_zone},
 		locale => $$req{locale} || 'fr_CH',
+		auto_apply =>  (defined $$req{auto_apply} ?  $$req{auto_apply}  : 1),
 	
 	};
 	 bless $self, $class;
-
 	 #$self->{cols} = [];
 	 $self->_init;
  	my @dates;
-
+	
+	$self->{subform} = [];
 
 	#my %formatters_db;
 	#my %formatters_f;
@@ -137,6 +138,15 @@ sub set_data_manager {
 	my ($self, $dman) = @_;
 	$self->{dman} = $dman;
 }
+
+sub add_childform {
+	my ($self, $sf) = @_;
+	$self->{log}->warn("add_childform : do not set auto_apply to 0 if you call this method") unless ($self->{auto_apply});
+	#carp("add_childform : do not set auto_apply to 0 if you call this method")  unless ($self->{auto_apply});
+	push @{$self->{subform}}, $sf;
+
+}
+
 
 #dman must contains all the rows 
 sub add_combo{
@@ -510,33 +520,50 @@ sub apply{
 		$self->{changed}=0;
 	
 	}
+	
+	$self->_save_subforms;
+
 	$self->_set_record_status_label;
 }
 
 sub next{
 	my $self = shift;
+	if ($self->{auto_apply} && $self->has_changed){ $self->apply;}
 	$self->_display_data($self->{dman}->next);
 }
 
 sub previous {
 	my $self = shift;
-	#$self->move(-1);
+	if ($self->{auto_apply} && $self->has_changed){ $self->apply;}
 	$self->_display_data($self->{dman}->previous);
 }
  
 sub first{
 	my $self = shift;
-	# $self->move(undef, 0);
+	if ($self->{auto_apply} && $self->has_changed){ $self->apply;}
 	$self->_display_data($self->{dman}->first);
 }
 
 sub last {
 	my $self = shift;
-	#$self->move(undef, $self->count() -1);
+	if ($self->{auto_apply} && $self->has_changed){ $self->apply;}
 	$self->_display_data($self->{dman}->last);
 }
 
+sub has_changed {
+	my $self = shift;
+	my $result= $self->{changed};
+	if ($self->{auto_apply}) {
+		foreach my $sf (@{$self->{subform}}){
+			if ($sf->has_changed){
+				$result = 1;
+				last;
+			} 
 
+		}
+	}
+	return $result;
+}
 
 #bind an onchanged sub with each modification of the datafields
 sub _bind_on_changed {
@@ -581,6 +608,7 @@ sub _set_recordspinner {
 		        $self->{log}->debug("rs_value changed will move to " . $pos);	
 			$self->{rec_spinner}->signal_handler_block( $coderef );
 			#$self->move( undef, $pos);
+			if ($self->{auto_apply} && $self->has_changed){ $self->apply;}
 			$self->{dman}->set_row_pos($pos);
 			$self->_display_data($pos);
                         $self->{rec_spinner}->signal_handler_unblock( $coderef );
@@ -703,7 +731,14 @@ sub _changed {
 
 }
 
+sub _save_subforms {
+	my ($self) = @_;
+	return unless ($self->{auto_apply});
+	foreach my $sf (@{$self->{subform}}){
+		$sf->apply if ($sf->has_changed);
+	}
 
+}
 sub _set_record_status_label {
 
     my $self = shift;
@@ -1035,6 +1070,10 @@ C<on_current> a reference to sub that will be called when moving to a new record
 
 C<date_formatters> a reference to an hash of Gtk2Entries id (keys), and format strings  that follow Rose::DateTime::Util (value) to display formatted Date
 
+=item * 
+
+C<auto_apply> defaults to 1, meaning that apply will be called if a changed has been made in a widget before moving to another record. Set this to 0 if you don't want this feature
+
 =back
 
 =head2 C<add_combo( {	data_manager =E<gt> $dman, 	id =E<gt> 'noed',  fields =E<gt> ["id", "nom"], }); >
@@ -1125,6 +1164,18 @@ C<first();>
 =item *
 
 C<last();>
+
+=item *
+
+C<add_childform( $childform );>
+
+You may add any dependant form or datasheet object with this call if you want that a changed in this subform/datasheet be applied when the apply method of this form is called. 
+
+=item *
+
+C<has_changed();>
+
+Return 1 if the data has been edited in the form and in any subform added with C<add_childform()> but not saved to the database. Return 0 otherwise.
 
 =back
 

@@ -102,6 +102,7 @@ sub new {
 	$builder->get_object("mainwindow")->signal_connect("destroy", \&gtk_main_quit);
 
 	#$self->{linker}->update;
+	$self->{linker}->add_childform($self->{sf}->{sform});
 
 	 $self->{dnav}->connect_signal_for("add", \&on_add_clicked, $self );
   	 $self->{dnav}->connect_signal_for("del", \&on_delete_clicked, $self );

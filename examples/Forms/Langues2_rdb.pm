@@ -87,7 +87,9 @@ sub new {
 
 	Gtk2::Widget::reparent($vbox, $sfctrl);
 	$subform->destroy();
-	
+
+	$self->{linker}->add_childform($self->{sf}->{sform});
+
 	$builder->get_object("vbox4")->show_all;
 	#$sf->show_all_except(["mainwindow"]);
 
